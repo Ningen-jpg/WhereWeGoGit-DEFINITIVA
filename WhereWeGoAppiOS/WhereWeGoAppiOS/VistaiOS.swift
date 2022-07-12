@@ -72,8 +72,8 @@ struct VistaiOS: View {
     }
 }
 
-//struct VistaiOS_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VistaiOS()
-//    }
-//}
+struct VistaiOS_Previews: PreviewProvider {
+    static var previews: some View {
+        VistaiOS(viewNumber: .constant(Int(3)))
+    }
+}

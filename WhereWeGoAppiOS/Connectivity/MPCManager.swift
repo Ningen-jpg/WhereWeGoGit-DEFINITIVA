@@ -120,7 +120,7 @@ extension MPCManager: MCSessionDelegate{
         }
         
         if let message = String(data: data, encoding: .utf8) {
-           
+           print(message)
             switch message{
             case "Connected":
                 initialView = true

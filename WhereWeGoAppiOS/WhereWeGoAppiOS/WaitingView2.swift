@@ -14,6 +14,9 @@ struct WaitingView2: View {
     @State private var isLoading = false
     @State private var isBgRotating = false
     
+    @State var waitingText2 = "Waiting for other players to answer"
+    let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
+    
     struct BlurView: UIViewRepresentable {
 
         let style: UIBlurEffect.Style
@@ -47,41 +50,31 @@ struct WaitingView2: View {
     var body: some View {
         
         
-        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+//        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         
         ZStack {
             
             Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                    if(mpcManager.ready){
-                        print(mpcManager.ready)
+                    print(mpcManager.ready)
+                    if(mpcManager.ready == true){
                         mpcManager.ready = false
+                        print(mpcManager.ready)
                         viewNumber = 3
                     }
                 }
             }
             
-            Rectangle()
-                        .fill(bgGradient)
-                        .edgesIgnoringSafeArea(.all)
-                        .blur(radius: 200, opaque: true)
+            
 
-            Rectangle()
-                .fill(gradient(color1: .red, color2: .green))
-                .frame(width: bounds.width * 3, height: bounds.height * 2, alignment: .center)
-                .edgesIgnoringSafeArea(.all)
-                .rotationEffect(Angle(degrees: isBgRotating ? 0 : 360))
-                .onAppear() {
-                    withAnimation(.linear.speed(0.1).repeatForever(autoreverses: false), {
-                        isBgRotating.toggle()
-                    })
-                }
+            BgView()
                 
             
             VStack{
                 Image(systemName: "hourglass.circle.fill")
                                 .font(.system(size: 150))
+                                .foregroundColor(.white)
                                 .frame(width: 200, height: 200)
                                 .scaleEffect(isLoading ? 1.1 : 1.0)
                                 .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
@@ -97,25 +90,45 @@ struct WaitingView2: View {
                         BlurView(style: .systemThickMaterialDark)
                             .mask({
                                 Rectangle()
-                                    .cornerRadius(50)
+                                    .cornerRadius(20)
                                     
                                     
                                 
                             })
-                                            .frame(width: 300, height: 300)
-                            Text("Waiting for other players...")
-                                .foregroundColor(.white)
-                                .font(.system(size: 18, weight: .regular, design: .default))
+                            .frame(width: bounds.width * 0.6, height: bounds.height * 0.16)
+//                            Text("Waiting for other players to answer")
+//                                .foregroundColor(.white)
+//                                .font(.system(size: 18, weight: .regular, design: .default))
+//                                .frame(width: 200, height: 200)
+//                                .multilineTextAlignment(.center)
+                        
+                        Text("\(waitingText2)")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25, weight: .medium, design: .default))
+                            .frame(width: bounds.width * 0.6)
+                            .multilineTextAlignment(.center)
+                                    .onReceive(timer) { _ in
+                                        if waitingText2 == "Waiting for other players to answer" {
+                                            waitingText2 = "Waiting for other players to answer."
+                                        } else if waitingText2 == "Waiting for other players to answer." {
+                                            waitingText2 = "Waiting for other players to answer.."
+                                        } else if waitingText2 == "Waiting for other players to answer.." {
+                                            waitingText2 = "Waiting for other players to answer..."
+                                        } else if waitingText2 == "Waiting for other players to answer..." {
+                                            waitingText2 = "Waiting for other players to answer"
+                                        }
+                                    }
+                        
                     }
                 }
-            }
+            }.padding(.bottom, bounds.height * 0.3)
         }
     }
 }
 
 
-//struct WaitingView2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WaitingView2()
-//    }
-//}
+struct WaitingView2_Previews: PreviewProvider {
+    static var previews: some View {
+        WaitingView2(viewNumber: .constant(Int(3)))
+    }
+}

@@ -8,72 +8,80 @@
 import SwiftUI
 
 struct ContentView2: View {
+    @Namespace var mainNamespace
+    
     let bgGradient = LinearGradient(colors: [.mint, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    var myPreferredFocusedView: UIView?
     
     
     var body: some View {
         
+        let detailsButton = Button(action: {}, label: {
+            ZStack {
+                Rectangle()
+                    .frame(width: 350, height: 150)
+                    .foregroundColor(.green)
+            Text("Details")
+                .foregroundColor(.white)
+                .font(.system(size: 70, weight: .semibold))
+            }
+        }).buttonStyle(.plain)
+            .buttonBorderShape(.roundedRectangle)
+        .padding(.bottom)
+        
         ZStack {
         
-        Rectangle()
-            .fill(bgGradient)
-            .blur(radius: 300, opaque: true)
+            PlayerView(video: "Mare")
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
-                HStack {
-                    Button(action: {}, label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 150, height: 100)
-                                .cornerRadius(30)
-                                .foregroundColor(.black)
-                            Image(systemName: "house.fill")
-                                                        .font(.system(size: 50))
-                                                        .foregroundColor(.white)
-                        }
-                        
-                        
-                    }).padding()
-                        .offset(x: 20, y: 10)
-                    Spacer()
-                    
-                }
+                
                 
                 
                 Spacer()
                 HStack {
                     Spacer()
-                    
                     Button(action: {}, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: 350, height: 150)
-                                .cornerRadius(30)
-                                .foregroundColor(.pink)
-                        Text("Details")
-                            .foregroundColor(.white)
-                            .font(.system(size: 70, weight: .semibold))
+                                .frame(width: 200, height: 150)
+                                .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
+                                
+                        Image(systemName: "house.fill")
+                                .font(.system(size: 70))
+                                .foregroundColor((.init(white: 0.3)))
+                                
                         }
-                    }).padding(.bottom)
+                    }).buttonStyle(.plain)
+                        .buttonBorderShape(.roundedRectangle)
+                    .padding(.bottom)
+                    
+                    
+                    
+                    detailsButton
+                        .prefersDefaultFocus(in: mainNamespace)
                     
                     
                     Button(action: {}, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: 350, height: 150)
-                                .cornerRadius(30)
-                                .foregroundColor(.gray)
+                                .frame(width: 200, height: 150)
+                                .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
                                 
                         Text("Skip")
-                                .foregroundColor(.white)
-                                .font(.system(size: 70, weight: .semibold))
+                                .foregroundColor((.init(white: 0.3)))
+                                .font(.system(size: 60, weight: .semibold))
                         }
-                    }).padding(.bottom)
+                    }).buttonStyle(.plain)
+                        .buttonBorderShape(.roundedRectangle)
+                    .padding(.bottom)
                     
                                 
                                 
                           Spacer()
-                }.padding(.bottom)
+                }.padding(.bottom, 80)
+                    .focusScope(mainNamespace)
             }
             
         }

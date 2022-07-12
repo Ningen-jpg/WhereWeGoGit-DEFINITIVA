@@ -15,6 +15,32 @@ struct PlayersView: View {
     @StateObject var userConnection: UserConnection = UserConnection()
 //    @State var profiles: [Profile] = userConnection.profiles
     
+    struct BlurView: UIViewRepresentable {
+
+        let style: UIBlurEffect.Style
+
+        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = .clear
+            let blurEffect = UIBlurEffect(style: style)
+            let blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.translatesAutoresizingMaskIntoConstraints = false
+            view.insertSubview(blurView, at: 0)
+            NSLayoutConstraint.activate([
+                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            ])
+            return view
+        }
+
+        func updateUIView(_ uiView: UIView,
+                          context: UIViewRepresentableContext<BlurView>) {
+            
+
+        }
+
+    }
+    
     let bgGradient = LinearGradient(colors: [.mint, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     let buttonGradient = LinearGradient(colors: [Color(red: 60/255, green: 255/255, blue: 80/255, opacity: 1), Color(red: 70/255, green: 80/255, blue: 255/255, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -26,22 +52,31 @@ struct PlayersView: View {
         
         ZStack {
             
-            Rectangle()
-                .fill(bgGradient)
-                .blur(radius: 300, opaque: true)
+            PlayerView(video: "Mare")
+                .edgesIgnoringSafeArea(.all)
             
             
             ZStack {
-                Rectangle()
-                    .frame(width: bounds.width * 0.65, height: bounds.height * 0.8, alignment: .center)
-                                .cornerRadius(60)
+                
+                BlurView(style: .light)
+                    .mask({
+                        Rectangle()
+                            .cornerRadius(30)
+                            .frame(width: bounds.width * 0.65, height: bounds.height * 0.8, alignment: .center)
+                            
+                        
+                    })
+                
+//                Rectangle()
+//                    .frame(width: bounds.width * 0.65, height: bounds.height * 0.8, alignment: .center)
+//                                .cornerRadius(60)
                 
                 VStack {
                     
                     HStack {
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.red)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[0].name)
                                 .foregroundColor(.black)
@@ -49,7 +84,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.orange)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[1].name)
                                 .foregroundColor(.black)
@@ -57,7 +92,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.yellow)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[2].name)
                                 .foregroundColor(.black)
@@ -65,7 +100,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.green)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[3].name)
                                 .foregroundColor(.black)
@@ -77,7 +112,7 @@ struct PlayersView: View {
                         
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.cyan)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[4].name)
                                 .foregroundColor(.black)
@@ -85,7 +120,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.indigo)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[5].name)
                                 .foregroundColor(.black)
@@ -93,7 +128,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.purple)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[6].name)
                                 .foregroundColor(.black)
@@ -101,7 +136,7 @@ struct PlayersView: View {
                         }
                         VStack {
                         Image(systemName: "person.circle.fill")
-                            .foregroundColor(.black)
+                                .foregroundColor(.pink)
                             .font(.system(size: 170))
                             Text(userConnection.profiles[7].name)
                                 .foregroundColor(.black)
@@ -121,13 +156,15 @@ struct PlayersView: View {
                         ZStack {
                             Rectangle()
                                 .frame(width: 250, height: 100)
-                                .cornerRadius(30)
-                                .foregroundColor(.pink)
+                                .foregroundColor(.green)
                         Text("Start")
                             .foregroundColor(.white)
                             .font(.system(size: 60, weight: .semibold))
                         }
                     }).padding()
+                        .buttonStyle(.plain)
+                        .buttonBorderShape(.roundedRectangle)
+                        .offset(x: 0, y: 20)
                     
                     
                 }
@@ -150,11 +187,11 @@ struct PlayersView: View {
     }
 }
 
-//struct PlayersView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            PlayersView()
-//        }
-//
-//    }
-//}
+struct PlayersView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            PlayersView(viewNumber: .constant(Int(3)))
+        }
+
+    }
+}

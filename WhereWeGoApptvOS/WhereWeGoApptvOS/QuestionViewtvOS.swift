@@ -13,6 +13,34 @@ struct QuestionViewtvOS: View {
     @Binding var viewNumber: Int
     @StateObject var userConnection: UserConnection = UserConnection()
 
+    struct BlurView: UIViewRepresentable {
+
+        let style: UIBlurEffect.Style
+
+        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = .clear
+            let blurEffect = UIBlurEffect(style: style)
+            let blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.translatesAutoresizingMaskIntoConstraints = false
+            view.insertSubview(blurView, at: 0)
+            NSLayoutConstraint.activate([
+                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            ])
+            return view
+        }
+
+        func updateUIView(_ uiView: UIView,
+                          context: UIViewRepresentableContext<BlurView>) {
+            
+
+        }
+
+    }
+    
+    
+    
     let mpcManager = MPCManager.shared
     let question: Question
     var bounds = UIScreen.main.bounds
@@ -39,7 +67,6 @@ struct QuestionViewtvOS: View {
             //Call PlayerView for Looped Videos
 
             PlayerView(video: "Mare")
-
                 .edgesIgnoringSafeArea(.all)
 
             
@@ -55,14 +82,14 @@ struct QuestionViewtvOS: View {
                         Rectangle()
                             .fill(redGradient)
                                 .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                                .cornerRadius(60)
+                                .cornerRadius(20)
                                 .opacity(0.7)
                                 .shadow(color: .black, radius: 20, x: 0, y: 35)
 
                         Rectangle()
                             .fill(redGradient)
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                            .cornerRadius(60)
+                            .cornerRadius(20)
                             .opacity(0.3)
                             .blur(radius: 15)
 
@@ -79,14 +106,14 @@ struct QuestionViewtvOS: View {
                         Rectangle()
                             .fill(greenGradient)
                                 .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                                .cornerRadius(60)
+                                .cornerRadius(20)
                                 .opacity(0.7)
                                 .shadow(color: .black, radius: 20, x: 0, y: 35)
 
                         Rectangle()
                             .fill(greenGradient)
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                            .cornerRadius(60)
+                            .cornerRadius(20)
                             .opacity(0.3)
                             .blur(radius: 15)
 
@@ -107,14 +134,14 @@ struct QuestionViewtvOS: View {
                         Rectangle()
                             .fill(blueGradient)
                                 .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                                .cornerRadius(60)
+                                .cornerRadius(20)
                                 .opacity(0.7)
                                 .shadow(color: .black, radius: 20, x: 0, y: 35)
 
                         Rectangle()
                             .fill(blueGradient)
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                            .cornerRadius(60)
+                            .cornerRadius(20)
                             .opacity(0.3)
                             .blur(radius: 15)
 
@@ -131,14 +158,14 @@ struct QuestionViewtvOS: View {
                         Rectangle()
                             .fill(purpleGradient)
                                 .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                                .cornerRadius(60)
+                                .cornerRadius(20)
                                 .opacity(0.7)
                                 .shadow(color: .black, radius: 20, x: 0, y: 35)
 
                         Rectangle()
                             .fill(purpleGradient)
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
-                            .cornerRadius(60)
+                            .cornerRadius(20)
                             .opacity(0.3)
                             .blur(radius: 15)
 
@@ -160,19 +187,28 @@ struct QuestionViewtvOS: View {
 
                 ZStack {
 
-                    Rectangle()
-                        .fill(wgGradient)
-                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
-                            .cornerRadius(60)
-                            .opacity(0.9)
-                            .shadow(color: .black, radius: 20, x: 0, y: 35)
-
-                    Rectangle()
-                        .fill(wgGradient)
-                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
-                        .cornerRadius(60)
-                        .opacity(0.5)
-                        .blur(radius: 15)
+                    
+                    BlurView(style: .light)
+                        .mask({
+                            Rectangle()
+                                .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
+                                .cornerRadius(20)
+                        }).shadow(color: .black, radius: 20, x: 0, y: 35)
+                    
+                    
+//                    Rectangle()
+//                        .fill(wgGradient)
+//                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
+//                            .cornerRadius(60)
+//                            .opacity(0.9)
+//                            .shadow(color: .black, radius: 20, x: 0, y: 35)
+//
+//                    Rectangle()
+//                        .fill(wgGradient)
+//                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
+//                        .cornerRadius(60)
+//                        .opacity(0.5)
+//                        .blur(radius: 15)
 
                     Text("\(question.question)")
                         .tint(.white)
@@ -190,8 +226,8 @@ struct QuestionViewtvOS: View {
     }
 }
 
-//struct QuestionViewtvOS_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionViewtvOS(question: Question(question: "Ciao", option1: "ciao1", option2: "ciao2", option3: "ciao3", option4: "ciao4"))
-//    }
-//}
+struct QuestionViewtvOS_Previews: PreviewProvider {
+    static var previews: some View {
+        QuestionViewtvOS(viewNumber: .constant(Int(3)), question: Question(question: "Domanda", option1: "1", option2: "2", option3: "3", option4: "4"))
+    }
+}

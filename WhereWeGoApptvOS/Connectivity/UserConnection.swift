@@ -53,7 +53,7 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
             answers = [0, 0, 0, 0]
             countAnswers = 0
             numQuestion += 1
-//            mpcManager.send(message: ready)
+            mpcManager.send(message: ready)
             
         }
         

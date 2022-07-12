@@ -15,47 +15,56 @@ struct InitialView: View {
     var body: some View {
         ZStack{
             PlayerView(video: "Mare")
+                .edgesIgnoringSafeArea(.all)
             
-            HStack(spacing: 300){
-                Button(action: {
-                    viewNumber = 1
-                }){
-                    Rectangle()
-                        .frame(width: bounds.width*0.3, height: bounds.height*0.3)
-                        .foregroundColor(.green)
-                        .overlay(content: {
-                            Image(systemName: "questionmark.circle.fill")
-                                .font(.system(size: 200, weight: .medium, design: .default))
-                                .foregroundColor(.red)
-                        })
-                    
-                }
+            VStack{
+                Spacer()
                 
-                
-                
-                
-                Button(action: {}){
-                    Rectangle()
-                        .frame(width: bounds.width*0.3, height: bounds.height*0.3)
-                        .foregroundColor(.green)
-                        .overlay(content: {
-                            Image(systemName: "globe")
-                                .font(.system(size: 200, weight: .medium, design: .default))
-                                .foregroundColor(Color(red: 0.2, green: 0.3, blue: 0.3, opacity: 1))
-                        })
-                }
-                
-                
-               
+                HStack(spacing: 150){
+                                Button(action: {
+                                    viewNumber = 1
+                                }, label: {
+                                    Rectangle()
+                                        .frame(width: bounds.width*0.18, height: bounds.height*0.2)
+                                        .foregroundColor(.init(red: 0.3, green: 0.85, blue: 0.3, opacity: 1))
+                                        .overlay(content: {
+                                            Image(systemName: "questionmark.circle.fill")
+                                                .font(.system(size: 160, weight: .medium, design: .default))
+                                                .foregroundColor(.init(red: 0.9, green: 0.1, blue: 0.1, opacity: 1))
+                                        })
+                                    
+                                })
+                                .buttonStyle(.plain)
+                                .buttonBorderShape(.roundedRectangle)
+                                
+                                
+                                
+                                Button(action: {}, label: {
+                                    Rectangle()
+                                        .frame(width: bounds.width*0.18, height: bounds.height*0.2)
+                                        .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
+                                        .overlay(content: {
+                                            Image(systemName: "globe")
+                                                .font(.system(size: 145, weight: .medium, design: .default))
+                                                .foregroundColor(.gray)
+                                        })
+                                }).buttonStyle(.plain)
+                        .buttonBorderShape(.roundedRectangle)
+                                
+                                
+                               
+                }.padding(.bottom, 100)
             }
+            
+            
             
             
         }
     }
 }
 
-//struct InitialView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InitialView()
-//    }
-//}
+struct InitialView_Previews: PreviewProvider {
+    static var previews: some View {
+        InitialView(viewNumber: .constant(Int(3)))
+    }
+}
