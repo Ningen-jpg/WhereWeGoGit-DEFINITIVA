@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Domanda1",
+        "option1": "Risposta1",
+        "option2": "Risposta2",
+        "option3": "Risposta3",
+        "option4": "Risposta4"
+    },
+    
+    {
+        "question": "Domanda2",
+        "option1": "Risposta1",
+        "option2": "Risposta2",
+        "option3": "Risposta3",
+        "option4": "Risposta4"
+    },
+    
+    {
+        "question": "Domanda3",
+        "option1": "Risposta1",
+        "option2": "Risposta2",
+        "option3": "Risposta3",
+        "option4": "Risposta4"
+    }
+    
+]
+        

@@ -1,0 +1,197 @@
+//
+//  ContentView.swift
+//  VistaQuiztvOS
+//
+//  Created by Stefano Leva on 03/07/22.
+//
+
+import SwiftUI
+import AVKit
+import AVFoundation
+
+struct QuestionViewtvOS: View {
+    @Binding var viewNumber: Int
+    @StateObject var userConnection: UserConnection = UserConnection()
+
+    let mpcManager = MPCManager.shared
+    let question: Question
+    var bounds = UIScreen.main.bounds
+    let redGradient = LinearGradient(colors: [Color(red: 0.9, green: 0.4, blue: 0.4, opacity: 1), Color(red: 0.9, green: 0.1, blue: 0.1, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    let greenGradient = LinearGradient(colors: [Color(red: 0.4, green: 0.9, blue: 0.4, opacity: 1), Color(red: 0.1, green: 0.9, blue: 0.1, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    let blueGradient = LinearGradient(colors: [Color(red: 0.4, green: 0.4, blue: 0.9, opacity: 1), Color(red: 0.1, green: 0.1, blue: 0.9, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    let purpleGradient = LinearGradient(colors: [Color(red: 0.6, green: 0.4, blue: 0.6, opacity: 1), Color(red: 0.6, green: 0.1, blue: 0.6, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    let wgGradient = LinearGradient(colors: [Color(red: 1, green: 1, blue: 1, opacity: 1), Color(red: 0.4, green: 0.4, blue: 0.4, opacity: 1)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    var body: some View {
+        
+        ZStack{
+            
+            Text("Title")
+                .onAppear(){
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                        if(userConnection.numQuestion > viewNumber){
+                            print(viewNumber)
+                            viewNumber = userConnection.numQuestion
+                    }
+                }
+            }
+            
+            //Call PlayerView for Looped Videos
+
+            PlayerView(video: "Mare")
+
+                .edgesIgnoringSafeArea(.all)
+
+            
+
+            VStack(spacing:100){
+
+                HStack(spacing:100){
+
+                  
+
+                    ZStack {
+
+                        Rectangle()
+                            .fill(redGradient)
+                                .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                                .cornerRadius(60)
+                                .opacity(0.7)
+                                .shadow(color: .black, radius: 20, x: 0, y: 35)
+
+                        Rectangle()
+                            .fill(redGradient)
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                            .cornerRadius(60)
+                            .opacity(0.3)
+                            .blur(radius: 15)
+
+                        Text("\(question.option1)")
+                            .tint(.white)
+                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }
+                    
+                        Spacer()
+
+                    ZStack {
+
+                        Rectangle()
+                            .fill(greenGradient)
+                                .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                                .cornerRadius(60)
+                                .opacity(0.7)
+                                .shadow(color: .black, radius: 20, x: 0, y: 35)
+
+                        Rectangle()
+                            .fill(greenGradient)
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                            .cornerRadius(60)
+                            .opacity(0.3)
+                            .blur(radius: 15)
+
+                        Text("\(question.option2)")
+                            .tint(.white)
+                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }
+                }
+                .frame(width: 1700, height: 400)
+
+                Spacer()
+
+                HStack(spacing:100){
+
+                    ZStack {
+
+                        Rectangle()
+                            .fill(blueGradient)
+                                .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                                .cornerRadius(60)
+                                .opacity(0.7)
+                                .shadow(color: .black, radius: 20, x: 0, y: 35)
+
+                        Rectangle()
+                            .fill(blueGradient)
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                            .cornerRadius(60)
+                            .opacity(0.3)
+                            .blur(radius: 15)
+
+                        Text("\(question.option3)")
+                            .tint(.white)
+                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }
+
+                    Spacer()
+
+                    ZStack {
+
+                        Rectangle()
+                            .fill(purpleGradient)
+                                .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                                .cornerRadius(60)
+                                .opacity(0.7)
+                                .shadow(color: .black, radius: 20, x: 0, y: 35)
+
+                        Rectangle()
+                            .fill(purpleGradient)
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                            .cornerRadius(60)
+                            .opacity(0.3)
+                            .blur(radius: 15)
+
+                        Text("\(question.option4)")
+                            .tint(.white)
+                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }
+                }
+                .frame(width: 1700, height: 400)
+
+            }
+
+            HStack{
+
+                Spacer()
+
+
+
+                ZStack {
+
+                    Rectangle()
+                        .fill(wgGradient)
+                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
+                            .cornerRadius(60)
+                            .opacity(0.9)
+                            .shadow(color: .black, radius: 20, x: 0, y: 35)
+
+                    Rectangle()
+                        .fill(wgGradient)
+                        .frame(width: bounds.size.width * 0.3, height: bounds.size.height * 0.3)
+                        .cornerRadius(60)
+                        .opacity(0.5)
+                        .blur(radius: 15)
+
+                    Text("\(question.question)")
+                        .tint(.white)
+                        .font(.system(size: 80.0, weight: .bold, design: .default))
+                        .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                    }
+
+
+                Spacer()
+
+            }
+
+        }
+
+    }
+}
+
+//struct QuestionViewtvOS_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionViewtvOS(question: Question(question: "Ciao", option1: "ciao1", option2: "ciao2", option3: "ciao3", option4: "ciao4"))
+//    }
+//}
