@@ -67,6 +67,7 @@ struct QuestionViewtvOS: View {
                                 viewNumber = userConnection.numQuestion
                             }
                     }
+                       
                 }
             }
             
