@@ -173,7 +173,7 @@ struct SetUpView: View {
                             
                             Text("Send")
                                 .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 1))
-                                                                        .font(.system(size: 30, weight: .bold))
+                                .font(.system(size: bounds.width * 0.09, weight: .bold))
                                                                         
                         
                         }

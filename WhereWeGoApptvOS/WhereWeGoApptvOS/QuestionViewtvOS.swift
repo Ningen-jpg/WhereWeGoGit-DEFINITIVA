@@ -57,9 +57,15 @@ struct QuestionViewtvOS: View {
             Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                        if(userConnection.numQuestion > viewNumber){
+                        if(userConnection.numQuestion != viewNumber){
                             print(viewNumber)
-                            viewNumber = userConnection.numQuestion
+                            if(userConnection.numQuestion == 12){
+                                userConnection.numQuestion = 2
+                                viewNumber = 12
+                            }
+                            else{
+                                viewNumber = userConnection.numQuestion
+                            }
                     }
                 }
             }

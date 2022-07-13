@@ -23,6 +23,8 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     var numQuestion = 2;
     @Published var viewNumber: Int = 2
     @Published var countAnswers: Int = 0
+    let ready = "Ready"
+    let end = "End"
     init() {
         mpcManager.delegate = self
     }
@@ -48,18 +50,19 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
         let num = message.answer
         answers[num] += 1
         countAnswers += 1
-        
-//        print(num)
-//        print(countAnswers)
-//        print("Utenti", count)
+
         if(countAnswers == count){
-            let ready = "Ready"
             
 //            Calcola risposta con l'array
             answers = [0, 0, 0, 0]
             countAnswers = 0
             numQuestion += 1
-            mpcManager.send(message: ready)
+            if(numQuestion != 3){
+                mpcManager.send(message: ready)
+            }
+            else{
+                mpcManager.send(message: end)
+            }
             
         }
         

@@ -21,6 +21,7 @@
 		85AEF9E9287471E900F871E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEF9E8287471E900F871E1 /* ContentView.swift */; };
 		85AEF9EB287471EB00F871E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85AEF9EA287471EB00F871E1 /* Assets.xcassets */; };
 		85AEF9EE287471EB00F871E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85AEF9ED287471EB00F871E1 /* Preview Assets.xcassets */; };
+		85F3A9FA287F207C00BCAF9A /* WaitingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F3A9F9287F207C00BCAF9A /* WaitingView3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		85AEF9E8287471E900F871E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		85AEF9EA287471EB00F871E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85AEF9ED287471EB00F871E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		85F3A9F9287F207C00BCAF9A /* WaitingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingView3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				85AC4932287C4DC5000FFD4B /* WaitingView.swift */,
 				854A5B8D28747C8200CB3942 /* VistaiOS.swift */,
 				85AC4936287C5298000FFD4B /* WaitingView2.swift */,
+				85F3A9F9287F207C00BCAF9A /* WaitingView3.swift */,
 				85AEF9EA287471EB00F871E1 /* Assets.xcassets */,
 				85AEF9E6287471E900F871E1 /* WhereWeGoAppiOSApp.swift */,
 				856A7C5328772FFB00A4BFEE /* ImagePickerView.swift */,
@@ -185,6 +188,7 @@
 				85611F412874A9350067855D /* MPCManager.swift in Sources */,
 				856A7C5428772FFB00A4BFEE /* ImagePickerView.swift in Sources */,
 				85AEF9E9287471E900F871E1 /* ContentView.swift in Sources */,
+				85F3A9FA287F207C00BCAF9A /* WaitingView3.swift in Sources */,
 				856A7C4F287721CA00A4BFEE /* InitialView.swift in Sources */,
 				856A7C5128772AA100A4BFEE /* SetUpView.swift in Sources */,
 				85AEF9E7287471E900F871E1 /* WhereWeGoAppiOSApp.swift in Sources */,

@@ -15,6 +15,7 @@ struct ContentView: View {
         switch viewNumber{
         case 0: InitialView(viewNumber: $viewNumber)
         case 1: PlayersView(viewNumber: $viewNumber, userConnection: userConnection)
+        case 12: ResultView(viewNumber: $viewNumber, userConnection: userConnection)
         default: QuestionViewtvOS(viewNumber: $viewNumber,userConnection: userConnection, question: Questions.questions[viewNumber - 2])
         }
     }

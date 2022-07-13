@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct WaitingView2: View {
+struct WaitingView3: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
     @State var ready = false
-    @State var end = false
     @State private var isLoading = false
     @State private var isBgRotating = false
     
-    @State var waitingText2 = "Waiting for other players to answer"
+    @State var waitingText2 = "Look at the tv for the result!"
     let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
     
     struct BlurView: UIViewRepresentable {
@@ -62,17 +61,11 @@ struct WaitingView2: View {
                     print(viewNumber)
                     if(mpcManager.ready){
                         ready = true
-                        print("true")
-                        timer.invalidate()
-                    }
-                    if(mpcManager.end){
-                        end = true
-                        print("end")
+                        print("ready")
                         timer.invalidate()
                     }
                 }
             }
-            
             
 //            Text("Title")
 //                .onAppear(){
@@ -88,8 +81,9 @@ struct WaitingView2: View {
             
             
 
-            if(!ready && !end){
+            if(!ready){
                 BgView()
+                
                 
             
                 VStack{
@@ -147,25 +141,21 @@ struct WaitingView2: View {
             else{
                 Text("Qualcosa")
                     .onAppear(){
-                        if(ready){
-                            print("numero")
-                            ready = false
-                            viewNumber = 3
-                        }
-                        if(end){
-                            print("numero")
-                            end = false
-                            viewNumber = 5
-                        }
+                        print("numero")
+                        ready = false
+                        viewNumber = 3
                     }
             }
         }
+        .onAppear(){
+            mpcManager.ready = false
     }
 }
 
 
-struct WaitingView2_Previews: PreviewProvider {
+struct WaitingView3_Previews: PreviewProvider {
     static var previews: some View {
-        WaitingView2(viewNumber: .constant(Int(3)))
+        WaitingView3(viewNumber: .constant(Int(3)))
     }
+}
 }

@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct ContentView2: View {
+struct ResultView: View {
     @Namespace var mainNamespace
+    @Binding var viewNumber: Int
+    @ObservedObject var userConnection: UserConnection
+    let mpcManager = MPCManager.shared
     
     let bgGradient = LinearGradient(colors: [.mint, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -42,7 +45,10 @@ struct ContentView2: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Button(action: {}, label: {
+                    Button(action: {
+                        mpcManager.send(message: userConnection.ready)
+                        viewNumber = 2
+                    }, label: {
                         ZStack {
                             Rectangle()
                                 .frame(width: 200, height: 150)
@@ -88,8 +94,8 @@ struct ContentView2: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView2()
-    }
-}
+//struct ResultViewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ResultView(viewNumber: .constant(Int(3)))
+//    }
+//}

@@ -15,6 +15,7 @@ class MPCManager: NSObject {
     @Published var initialView = false
     @Published var quiz = false
     @Published var ready = false
+    @Published var end = false
     
     private let peerID :MCPeerID = MCPeerID(displayName: UIDevice.current.name)
     
@@ -134,6 +135,10 @@ extension MPCManager: MCSessionDelegate{
             case "Ready":
                 ready = true
                 print(ready)
+                print(message)
+            case "End":
+                end = true
+                print(end)
                 print(message)
             default: print("default")
         }
