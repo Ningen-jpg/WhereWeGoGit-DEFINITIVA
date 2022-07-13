@@ -10,6 +10,7 @@ import SwiftUI
 struct SetUpView: View {
     let mpcManager = MPCManager.shared
     var bounds = UIScreen.main.bounds
+    @State var connected = false
     @State var username: String = ""
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var selectedImage: UIImage?
@@ -25,7 +26,22 @@ struct SetUpView: View {
             
             let grayGradient = LinearGradient(colors: [.gray, nearBlack], startPoint: .topLeading, endPoint: .bottomTrailing)
             
+        ZStack {
+            
+            Text("Title")
+                .onAppear(){
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                        if(mpcManager.initialView){
+                            connected = true
+                        }
+                }
+            }
+            
+            BgView()
+        
             VStack(spacing: 10){
+                
+                
                 VStack{
                     
                     if selectedImage != nil {
@@ -106,7 +122,7 @@ struct SetUpView: View {
                 VStack(spacing:10){
                
                 TextField(
-                        "User name",
+                        "Username",
                         text: $username
                     )
                    
@@ -116,10 +132,10 @@ struct SetUpView: View {
                     .font(.system(size: 25, weight: .regular))
                     .multilineTextAlignment(.center)
                     .overlay(
-                            RoundedRectangle(cornerRadius: 14)
-                                .stroke(Color.black, lineWidth: 1.5)
+                            RoundedRectangle(cornerRadius: 3)
+                                .stroke(Color.black, lineWidth: 1)
                         )
-                    .padding(.bottom, 50)
+                    .padding(.top, 10)
                     .foregroundColor(.black)
                     
                     
@@ -128,41 +144,65 @@ struct SetUpView: View {
                 }
                 
                 Button(action: {
-                    let profile = Profile(name: username)
-                    mpcManager.send(profile: profile)
-                    self.viewNumber = 2
+                    if connected {
+                        let profile = Profile(name: username)
+                        mpcManager.send(profile: profile)
+                        self.viewNumber = 1
+                    }
+                        
                     
-                }){
+                    
+                }, label: {
+                    ZStack {
+                        if connected{
+                            Rectangle()
+                                .foregroundColor(.white)
+                                                                                                    .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
+                                                                                                    .cornerRadius(20)
+                            
+                            Text("Send")
+                                                                        .foregroundColor(.blue)
+                                                                        .font(.system(size: 30, weight: .bold))
+                                                                        
+                        }
+                        else{
+                            Rectangle()
+                                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
+                                                                                                    .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
+                                                                                                    .cornerRadius(20)
+                            
+                            Text("Send")
+                                .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 1))
+                                                                        .font(.system(size: 30, weight: .bold))
+                                                                        
+                        
+                        }
+                    }
+                    
+                    
+                }).padding(.top, 100)
+                    .onAppear() {
+                        mpcManager.startService()
+                    }
                 
-                    Text("Invia")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 30, weight: .bold))
-                        .background(
-                        Rectangle()
-                            .foregroundColor(Color( red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
-                            .frame(width: bounds.width * 0.4, height: bounds.height * 0.1)
-                            .cornerRadius(30)
-                        )
-                    
-                }
-                .padding(.top, 290)
+                Text("Edit your picture and username and connect to the TV")
+                    .frame(width: bounds.width * 0.4, height: bounds.height * 0.1)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, -15)
+                    .foregroundColor(.black)
+                    .font(.system(size: 15))
             }
-            .frame(width: bounds.width, height: bounds.height)
-            .background(
-                Rectangle()
-                    .fill(bgGradient)
-                    .edgesIgnoringSafeArea(.all)
-                    .blur(radius: 200, opaque: true)
                 
-            )
             
         }
+        }
+        
     }
 
 
 
-//struct SetUpView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SetUpView()
-//    }
-//}
+struct SetUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SetUpView(viewNumber: .constant(Int(3)))
+    }
+}

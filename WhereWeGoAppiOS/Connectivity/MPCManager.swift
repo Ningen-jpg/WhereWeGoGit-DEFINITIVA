@@ -77,6 +77,8 @@ class MPCManager: NSObject {
 extension MPCManager: MCNearbyServiceBrowserDelegate{
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         print("A Peer is found \(peerID.displayName)")
+        //@TODO
+//        Controlla connessione tra telefoni
         browser.invitePeer(peerID, to: session, withContext: nil, timeout: 10)
     }
     
@@ -120,7 +122,7 @@ extension MPCManager: MCSessionDelegate{
         }
         
         if let message = String(data: data, encoding: .utf8) {
-           
+           print(message)
             switch message{
             case "Connected":
                 initialView = true

@@ -15,6 +15,9 @@ struct WaitingView: View {
     @State private var isLoading = false
     @State private var isBgRotating = false
     
+    @State var waitingText = "Please, wait"
+    let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
+    
     struct BlurView: UIViewRepresentable {
 
         let style: UIBlurEffect.Style
@@ -55,32 +58,24 @@ struct WaitingView: View {
             Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                        print("waiting1")
                     if(mpcManager.quiz){
+                        mpcManager.quiz = false
                         viewNumber = 3
+                        timer.invalidate()
                     }
                 }
             }
             
-            Rectangle()
-                        .fill(bgGradient)
-                        .edgesIgnoringSafeArea(.all)
-                        .blur(radius: 200, opaque: true)
+            
 
-            Rectangle()
-                .fill(gradient(color1: .red, color2: .green))
-                .frame(width: bounds.width * 3, height: bounds.height * 2, alignment: .center)
-                .edgesIgnoringSafeArea(.all)
-                .rotationEffect(Angle(degrees: isBgRotating ? 0 : 360))
-                .onAppear() {
-                    withAnimation(.linear.speed(0.1).repeatForever(autoreverses: false), {
-                        isBgRotating.toggle()
-                    })
-                }
+            BgView()
                 
             
             VStack{
                 Image(systemName: "hourglass.circle.fill")
                                 .font(.system(size: 150))
+                                .foregroundColor(.white)
                                 .frame(width: 200, height: 200)
                                 .scaleEffect(isLoading ? 1.1 : 1.0)
                                 .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
@@ -96,25 +91,44 @@ struct WaitingView: View {
                         BlurView(style: .systemThickMaterialDark)
                             .mask({
                                 Rectangle()
-                                    .cornerRadius(50)
+                                    .cornerRadius(20)
                                     
                                     
                                 
                             })
-                                            .frame(width: 300, height: 300)
-                            Text("Please, wait...")
-                                .foregroundColor(.white)
-                                .font(.system(size: 18, weight: .regular, design: .default))
+                            .frame(width: bounds.width * 0.5, height: bounds.height * 0.12)
+                        
+//                            Text("Please, wait...")
+//                            .foregroundColor(.white)
+//                            .font(.system(size: 25, weight: .medium, design: .default))
+                        
+                        Text("\(waitingText)")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25, weight: .medium, design: .default))
+                            .frame(width: bounds.width * 0.6)
+                            .multilineTextAlignment(.center)
+                                    .onReceive(timer) { _ in
+                                        if waitingText == "Please, wait" {
+                                            waitingText = "Please, wait."
+                                        } else if waitingText == "Please, wait." {
+                                            waitingText = "Please, wait.."
+                                        } else if waitingText == "Please, wait.." {
+                                            waitingText = "Please, wait..."
+                                        } else if waitingText == "Please, wait..." {
+                                            waitingText = "Please, wait"
+                                        }
+                                    }
+                                
                     }
                 }
-            }
+            }.padding(.bottom, bounds.height * 0.3)
         }
     }
 }
 
 
-//struct WaitingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WaitingView()
-//    }
-//}
+struct WaitingView_Previews: PreviewProvider {
+    static var previews: some View {
+        WaitingView(viewNumber: .constant(Int(3)))
+    }
+}

@@ -12,5 +12,5 @@ import UIKit
 //    static func setQuestion(i: Int) -> QuestionViewtvOS {
 //        return QuestionViewtvOS(question: Questions.questions[i])
 //    }
-//    
+//
 //}

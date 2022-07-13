@@ -14,9 +14,57 @@ struct InitialView: View {
     let mpcManager = MPCManager.shared
     let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
     
+    struct BlurView: UIViewRepresentable {
+
+        let style: UIBlurEffect.Style
+
+        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = .clear
+            let blurEffect = UIBlurEffect(style: style)
+            let blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.translatesAutoresizingMaskIntoConstraints = false
+            view.insertSubview(blurView, at: 0)
+            NSLayoutConstraint.activate([
+                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            ])
+            return view
+        }
+
+        func updateUIView(_ uiView: UIView,
+                          context: UIViewRepresentableContext<BlurView>) {
+            
+
+        }
+
+    }
+    
     
     var body: some View {
-            VStack{
+        ZStack {
+        BgView()
+        
+            VStack {
+            
+                
+                
+                Button(action : {
+                    mpcManager.startService()
+                    
+                    if(mpcManager.initialView){
+                        connected = true
+                    }
+                }, label : {
+                    Image(systemName: "appletv")
+                        .font(.system(size: 50, weight: .semibold))
+                        .frame(width: bounds.width * 0.2, height: bounds.height * 0.1)
+                        .foregroundColor(connected ? .green : .red)
+                })
+                .frame(width: bounds.width * 0.2, height: bounds.height * 0.1)
+                .padding(.top, bounds.height * 0.53)
+                .offset(x: bounds.width * 0.35, y: 0)
+            
 
                 Button(action:{
                     if(mpcManager.initialView){
@@ -27,46 +75,36 @@ struct InitialView: View {
                         
                     }
                 }, label: {
-                    Rectangle()
-                        .frame(width: bounds.width * 0.6, height: bounds.height * 0.15)
-                        .cornerRadius(30)
-                        .overlay(content: {
-                            Text("Let's get started!")
-                                .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        })
-                        .padding(.bottom, bounds.height * 0.3)
-
-                })
-                
-                Button(action : {
-                    mpcManager.startService()
-                    
-                    if(mpcManager.initialView){
-                        connected = true
+                    ZStack {
+                        BlurView(style: .systemThinMaterialLight)
+                                                .mask({
+                                                    Rectangle()
+                                                                            .frame(width: bounds.width * 0.6, height: bounds.height * 0.15)
+                                                                            .cornerRadius(30)
+                                                                            })
+                        Text("Let's get started")
+                            .font(.system(size: 25))
+                            .foregroundColor(.blue)
                     }
-                }, label : {
-                    Image(systemName: "appletv")
-                        .font(.system(size: 80, weight: .bold))
-                        .frame(width: bounds.width * 0.2, height: bounds.height * 0.1)
-                        .foregroundColor(.black)
-                })
-                .frame(width: bounds.width * 0.2, height: bounds.height * 0.1)
+                    .padding(.bottom, bounds.height * 0.2)
+
+                }).shadow(color: .init(white: 0.1, opacity: 0.8), radius: 30, x: 0, y: 35)
+                
+                
+                
+                
+                
+            
+        
             }
-            .background(content: {
-                Rectangle()
-                    .fill(bgGradient)
-                    .frame(width: bounds.width, height: bounds.height)
-                    .edgesIgnoringSafeArea(.all)
-            })
         }
     }
-    
+}
         
 
 
-//struct InitialView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InitialView()
-//    }
-//}
+struct InitialView_Previews: PreviewProvider {
+    static var previews: some View {
+        InitialView(viewNumber: .constant(Int(3)))
+    }
+}
