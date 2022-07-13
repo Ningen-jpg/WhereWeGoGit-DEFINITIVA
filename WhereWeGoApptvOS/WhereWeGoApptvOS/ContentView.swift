@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
-//ciao
+
 struct ContentView: View {
-   @State var viewNumber = 0
+    @State var viewNumber = 0
+    @StateObject var userConnection: UserConnection = UserConnection()
     
     var body: some View {
         switch viewNumber{
         case 0: InitialView(viewNumber: $viewNumber)
-        case 1: PlayersView(viewNumber: $viewNumber)
-        default: QuestionViewtvOS(viewNumber: $viewNumber, question: Questions.questions[viewNumber - 2])
+        case 1: PlayersView(viewNumber: $viewNumber, userConnection: userConnection)
+        default: QuestionViewtvOS(viewNumber: $viewNumber,userConnection: userConnection, question: Questions.questions[viewNumber - 2])
         }
     }
 }
