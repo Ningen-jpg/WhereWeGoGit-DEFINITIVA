@@ -57,7 +57,7 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
             answers = [0, 0, 0, 0]
             countAnswers = 0
             numQuestion += 1
-            if(numQuestion != 3){
+            if(numQuestion != 12){
                 mpcManager.send(message: ready)
             }
             else{
