@@ -12,8 +12,8 @@ struct PlayersView: View {
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
     
-    @StateObject var userConnection: UserConnection = UserConnection()
-//    @State var profiles: [Profile] = userConnection.profiles
+    @ObservedObject var userConnection: UserConnection
+    //    @State var profiles: [Profile] = userConnection.profiles
     
     struct BlurView: UIViewRepresentable {
 
@@ -187,11 +187,11 @@ struct PlayersView: View {
     }
 }
 
-struct PlayersView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            PlayersView(viewNumber: .constant(Int(3)))
-        }
-
-    }
-}
+//struct PlayersView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            PlayersView(viewNumber: .constant(Int(3)))
+//        }
+//
+//    }
+//}

@@ -51,15 +51,18 @@ struct WaitingView: View {
     var body: some View {
         
         
-//        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         
         ZStack {
             
             Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                        print("waiting1")
                     if(mpcManager.quiz){
+                        mpcManager.quiz = false
                         viewNumber = 3
+                        timer.invalidate()
                     }
                 }
             }

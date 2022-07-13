@@ -29,9 +29,11 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     
     func mpcManager(_ manager: MPCManager, didReceive message: Profile, from peer: MCPeerID) {
         let name = message.name
-        if(count<8){
+        if(count<7){
             profiles[count].name = name
+            print(count)
             count += 1
+            print(count)
         }
         else{
             print("Max number of participants reached")
@@ -43,12 +45,16 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     }
     
     func mpcManager(_ manager: MPCManager, didReceive message: Message, from peer: MCPeerID) {
-        let num = message.number
+        let num = message.answer
         answers[num] += 1
         countAnswers += 1
         
+//        print(num)
+//        print(countAnswers)
+//        print("Utenti", count)
         if(countAnswers == count){
             let ready = "Ready"
+            
 //            Calcola risposta con l'array
             answers = [0, 0, 0, 0]
             countAnswers = 0

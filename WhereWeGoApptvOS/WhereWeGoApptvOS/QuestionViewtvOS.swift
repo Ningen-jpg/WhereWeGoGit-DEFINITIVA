@@ -11,7 +11,7 @@ import AVFoundation
 
 struct QuestionViewtvOS: View {
     @Binding var viewNumber: Int
-    @StateObject var userConnection: UserConnection = UserConnection()
+    @ObservedObject var userConnection: UserConnection
 
     struct BlurView: UIViewRepresentable {
 
@@ -226,8 +226,8 @@ struct QuestionViewtvOS: View {
     }
 }
 
-struct QuestionViewtvOS_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionViewtvOS(viewNumber: .constant(Int(3)), question: Question(question: "Domanda", option1: "1", option2: "2", option3: "3", option4: "4"))
-    }
-}
+//struct QuestionViewtvOS_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuestionViewtvOS(viewNumber: .constant(Int(3)), question: Question(question: "Domanda", option1: "1", option2: "2", option3: "3", option4: "4"))
+//    }
+//}

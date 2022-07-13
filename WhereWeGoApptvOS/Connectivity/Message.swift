@@ -8,7 +8,7 @@
 import Foundation
 
 struct Message: Codable{
-    let number: Int
+    let answer: Int
 //    let username: String
     
     func toData() -> Data? {

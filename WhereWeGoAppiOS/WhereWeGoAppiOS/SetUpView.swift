@@ -22,11 +22,20 @@ struct SetUpView: View {
     
     
     var body: some View {
-//            let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+            let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
             
             let grayGradient = LinearGradient(colors: [.gray, nearBlack], startPoint: .topLeading, endPoint: .bottomTrailing)
             
         ZStack {
+            
+            Text("Title")
+                .onAppear(){
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                        if(mpcManager.initialView){
+                            connected = true
+                        }
+                }
+            }
             
             BgView()
         
@@ -135,7 +144,7 @@ struct SetUpView: View {
                 }
                 
                 Button(action: {
-                    if mpcManager.initialView {
+                    if connected {
                         let profile = Profile(name: username)
                         mpcManager.send(profile: profile)
                         self.viewNumber = 1
@@ -145,15 +154,29 @@ struct SetUpView: View {
                     
                 }, label: {
                     ZStack {
-                        Rectangle()
-                            .foregroundColor(.white)
-                                                                                                .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
-                                                                                                .cornerRadius(20)
+                        if connected{
+                            Rectangle()
+                                .foregroundColor(.white)
+                                                                                                    .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
+                                                                                                    .cornerRadius(20)
+                            
+                            Text("Send")
+                                                                        .foregroundColor(.blue)
+                                                                        .font(.system(size: 30, weight: .bold))
+                                                                        
+                        }
+                        else{
+                            Rectangle()
+                                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
+                                                                                                    .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
+                                                                                                    .cornerRadius(20)
+                            
+                            Text("Send")
+                                .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5, opacity: 1))
+                                                                        .font(.system(size: 30, weight: .bold))
+                                                                        
                         
-                        Text("Send")
-                                                                    .foregroundColor(.blue)
-                                                                    .font(.system(size: 30, weight: .bold))
-                                                                    
+                        }
                     }
                     
                     

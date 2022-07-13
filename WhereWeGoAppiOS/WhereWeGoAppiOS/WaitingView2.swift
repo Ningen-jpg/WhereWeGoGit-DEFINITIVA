@@ -11,6 +11,7 @@ struct WaitingView2: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
+    @State var ready = false
     @State private var isLoading = false
     @State private var isBgRotating = false
     
@@ -50,78 +51,100 @@ struct WaitingView2: View {
     var body: some View {
         
         
-//        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         
         ZStack {
             
             Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                    print(mpcManager.ready)
-                    if(mpcManager.ready == true){
-                        mpcManager.ready = false
-                        print(mpcManager.ready)
-                        viewNumber = 3
+                    print(viewNumber)
+                    if(mpcManager.ready){
+                        ready = true
+                        print("true")
+                        timer.invalidate()
                     }
                 }
             }
             
+//            Text("Title")
+//                .onAppear(){
+//                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+//                    print(ready)
+//                    if(ready){
+//                        ready = false
+//                        print(ready)
+//                        viewNumber = 3
+//                    }
+//                }
+//            }
+            
             
 
-            BgView()
+            if(!ready){
+                BgView()
                 
             
-            VStack{
-                Image(systemName: "hourglass.circle.fill")
-                                .font(.system(size: 150))
-                                .foregroundColor(.white)
-                                .frame(width: 200, height: 200)
-                                .scaleEffect(isLoading ? 1.1 : 1.0)
-                                .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
-                                .onAppear() {
-                                    withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 1).repeatForever(autoreverses: false), {
-                                        isLoading.toggle()
-                                    })
-                                }
-                
-                ZStack {
-                
-                    ZStack {
-                        BlurView(style: .systemThickMaterialDark)
-                            .mask({
-                                Rectangle()
-                                    .cornerRadius(20)
-                                    
-                                    
-                                
-                            })
-                            .frame(width: bounds.width * 0.6, height: bounds.height * 0.16)
-//                            Text("Waiting for other players to answer")
-//                                .foregroundColor(.white)
-//                                .font(.system(size: 18, weight: .regular, design: .default))
-//                                .frame(width: 200, height: 200)
-//                                .multilineTextAlignment(.center)
-                        
-                        Text("\(waitingText2)")
-                            .foregroundColor(.white)
-                            .font(.system(size: 25, weight: .medium, design: .default))
-                            .frame(width: bounds.width * 0.6)
-                            .multilineTextAlignment(.center)
-                                    .onReceive(timer) { _ in
-                                        if waitingText2 == "Waiting for other players to answer" {
-                                            waitingText2 = "Waiting for other players to answer."
-                                        } else if waitingText2 == "Waiting for other players to answer." {
-                                            waitingText2 = "Waiting for other players to answer.."
-                                        } else if waitingText2 == "Waiting for other players to answer.." {
-                                            waitingText2 = "Waiting for other players to answer..."
-                                        } else if waitingText2 == "Waiting for other players to answer..." {
-                                            waitingText2 = "Waiting for other players to answer"
-                                        }
+                VStack{
+                    Image(systemName: "hourglass.circle.fill")
+                                    .font(.system(size: 150))
+                                    .foregroundColor(.white)
+                                    .frame(width: 200, height: 200)
+                                    .scaleEffect(isLoading ? 1.1 : 1.0)
+                                    .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                    .onAppear() {
+                                        withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 1).repeatForever(autoreverses: false), {
+                                            isLoading.toggle()
+                                        })
                                     }
+                    
+                    ZStack {
+                    
+                        ZStack {
+                            BlurView(style: .systemThickMaterialDark)
+                                .mask({
+                                    Rectangle()
+                                        .cornerRadius(20)
+                                        
+                                        
+                                
+                                })
+                                .frame(width: bounds.width * 0.6, height: bounds.height * 0.16)
+    //                            Text("Waiting for other players to answer")
+    //                                .foregroundColor(.white)
+    //                                .font(.system(size: 18, weight: .regular, design: .default))
+    //                                .frame(width: 200, height: 200)
+    //                                .multilineTextAlignment(.center)
+                            
+                            Text("\(waitingText2)")
+                                .foregroundColor(.white)
+                                .font(.system(size: 25, weight: .medium, design: .default))
+                                .frame(width: bounds.width * 0.6)
+                                .multilineTextAlignment(.center)
+                                        .onReceive(timer) { _ in
+                                            if waitingText2 == "Waiting for other players to answer" {
+                                                waitingText2 = "Waiting for other players to answer."
+                                            } else if waitingText2 == "Waiting for other players to answer." {
+                                                    waitingText2 = "Waiting for other players to answer.."
+                                            } else if waitingText2 == "Waiting for other players to answer.." {
+                                                waitingText2 = "Waiting for other players to answer..."
+                                            } else if waitingText2 == "Waiting for other players to answer..." {
+                                                waitingText2 = "Waiting for other players to answer"
+                                            }
+                                        }
                         
+                        }
                     }
-                }
-            }.padding(.bottom, bounds.height * 0.3)
+                }.padding(.bottom, bounds.height * 0.3)
+            }
+            else{
+                Text("Qualcosa")
+                    .onAppear(){
+                        print("numero")
+                        ready = false
+                        viewNumber = 3
+                    }
+            }
         }
     }
 }

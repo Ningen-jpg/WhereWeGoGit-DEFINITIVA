@@ -117,13 +117,17 @@ extension MPCManager: MCSessionDelegate{
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         if let message = Message.toMessage(from: data) {
             if let delegate = delegate {
-                delegate.mpcManager(self, didReceive: message, from: peerID)
+                DispatchQueue.main.sync {
+                    delegate.mpcManager(self, didReceive: message, from: peerID)
+                }
             }
         }
         
         if let message = Profile.toMessage(from: data) {
             if let delegate = delegate {
-                delegate.mpcManager(self, didReceive: message, from: peerID)
+                DispatchQueue.main.sync {
+                    delegate.mpcManager(self, didReceive: message, from: peerID)
+                }
             }
         }
         
