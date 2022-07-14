@@ -180,6 +180,7 @@ struct SetUpView: View {
                     
                     
                 }).padding(.top, bounds.height * 0.2)
+                    .disabled(!connected)
                     .onAppear() {
                         mpcManager.startService()
                     }

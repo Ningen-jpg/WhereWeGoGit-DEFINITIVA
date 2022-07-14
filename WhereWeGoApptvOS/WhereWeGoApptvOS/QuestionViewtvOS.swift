@@ -60,7 +60,7 @@ struct QuestionViewtvOS: View {
                 Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                        if(userConnection.numQuestion != viewNumber && !mpcManager.result){
+                        if(userConnection.numQuestion != viewNumber && mpcManager.result == false){
                             print(viewNumber)
                             if(userConnection.numQuestion == 12){
                                 userConnection.numQuestion = 2

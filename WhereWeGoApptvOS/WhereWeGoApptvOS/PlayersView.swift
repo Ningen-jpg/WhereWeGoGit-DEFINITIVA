@@ -55,7 +55,7 @@ struct PlayersView: View {
             .onAppear(){
                 Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                     if(userConnection.count > 0){
-                        users.toggle()
+                        users = true
                     }
                 }
             }
@@ -220,7 +220,9 @@ struct PlayersView: View {
                                 .foregroundColor(users ? .white : .black)
                             .font(.system(size: bounds.height * 0.06, weight: .semibold))
                         }
-                    }).padding()
+                    })
+                    .disabled(!users)
+                    .padding()
                         .buttonStyle(.plain)
                         .buttonBorderShape(.roundedRectangle)
                     
