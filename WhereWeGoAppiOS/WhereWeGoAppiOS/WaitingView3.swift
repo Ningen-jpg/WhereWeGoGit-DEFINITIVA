@@ -15,7 +15,7 @@ struct WaitingView3: View {
     @State private var isLoading = false
     @State private var isBgRotating = false
     
-    @State var waitingText2 = "Look at the tv for the result!"
+    @State var waitingText2 = "Pack up, you are going to"
     let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
     
     struct BlurView: UIViewRepresentable {
@@ -51,7 +51,7 @@ struct WaitingView3: View {
     var body: some View {
         
         
-        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+//        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         
         ZStack {
             
@@ -87,14 +87,15 @@ struct WaitingView3: View {
                 
             
                 VStack{
-                    Image(systemName: "hourglass.circle.fill")
-                                    .font(.system(size: 150))
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.system(size: bounds.width * 0.3))
                                     .foregroundColor(.white)
-                                    .frame(width: 200, height: 200)
-                                    .scaleEffect(isLoading ? 1.1 : 1.0)
-                                    .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                    .frame(width: bounds.width * 0.4, height: bounds.height * 0.2)
+//                                    .scaleEffect(isLoading ? 1.2 : 1.0)
+                                    .offset(x: 0, y: isLoading ? -50 : 0)
+//                                    .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
                                     .onAppear() {
-                                        withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 1).repeatForever(autoreverses: false), {
+                                        withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), {
                                             isLoading.toggle()
                                         })
                                     }
@@ -105,7 +106,7 @@ struct WaitingView3: View {
                             BlurView(style: .systemThickMaterialDark)
                                 .mask({
                                     Rectangle()
-                                        .cornerRadius(20)
+                                        .cornerRadius(10)
                                         
                                         
                                 
@@ -119,18 +120,18 @@ struct WaitingView3: View {
                             
                             Text("\(waitingText2)")
                                 .foregroundColor(.white)
-                                .font(.system(size: 25, weight: .medium, design: .default))
+                                .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
                                 .frame(width: bounds.width * 0.6)
                                 .multilineTextAlignment(.center)
                                         .onReceive(timer) { _ in
-                                            if waitingText2 == "Waiting for other players to answer" {
-                                                waitingText2 = "Waiting for other players to answer."
-                                            } else if waitingText2 == "Waiting for other players to answer." {
-                                                    waitingText2 = "Waiting for other players to answer.."
-                                            } else if waitingText2 == "Waiting for other players to answer.." {
-                                                waitingText2 = "Waiting for other players to answer..."
-                                            } else if waitingText2 == "Waiting for other players to answer..." {
-                                                waitingText2 = "Waiting for other players to answer"
+                                            if waitingText2 == "Pack up, you are going to" {
+                                                waitingText2 = "Pack up, you are going to."
+                                            } else if waitingText2 == "Pack up, you are going to." {
+                                                    waitingText2 = "Pack up, you are going to.."
+                                            } else if waitingText2 == "Pack up, you are going to.." {
+                                                waitingText2 = "Pack up, you are going to..."
+                                            } else if waitingText2 == "Pack up, you are going to..." {
+                                                waitingText2 = "Pack up, you are going to"
                                             }
                                         }
                         

@@ -51,7 +51,7 @@ struct WaitingView: View {
     var body: some View {
         
         
-        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+//        let bgGradient = LinearGradient(colors: [.green, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
         
         ZStack {
             
@@ -74,10 +74,10 @@ struct WaitingView: View {
             
             VStack{
                 Image(systemName: "hourglass.circle.fill")
-                                .font(.system(size: 150))
+                    .font(.system(size: bounds.width * 0.3))
                                 .foregroundColor(.white)
-                                .frame(width: 200, height: 200)
-                                .scaleEffect(isLoading ? 1.1 : 1.0)
+                                .frame(width: bounds.width * 0.4, height: bounds.height * 0.2)
+//                                .scaleEffect(isLoading ? 1.1 : 1.0)
                                 .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
                                 .onAppear() {
                                     withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 1).repeatForever(autoreverses: false), {
@@ -91,7 +91,7 @@ struct WaitingView: View {
                         BlurView(style: .systemThickMaterialDark)
                             .mask({
                                 Rectangle()
-                                    .cornerRadius(20)
+                                    .cornerRadius(10)
                                     
                                     
                                 
@@ -104,8 +104,8 @@ struct WaitingView: View {
                         
                         Text("\(waitingText)")
                             .foregroundColor(.white)
-                            .font(.system(size: 25, weight: .medium, design: .default))
-                            .frame(width: bounds.width * 0.6)
+                            .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
+                            .frame(width: bounds.width * 0.5)
                             .multilineTextAlignment(.center)
                                     .onReceive(timer) { _ in
                                         if waitingText == "Please, wait" {

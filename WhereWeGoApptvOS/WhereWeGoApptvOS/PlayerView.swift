@@ -12,7 +12,7 @@ import AVFoundation
 struct PlayerView: UIViewRepresentable {
     var video: String
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
-        }
+    }
 
         func makeUIView(context: Context) -> UIView {
             let newVideo = LoopingPlayerUIView(frame: .zero)
@@ -51,6 +51,7 @@ class LoopingPlayerUIView: UIView {
         playerLooper = AVPlayerLooper(player: player, templateItem: item)
         // Start the movie
         player.play()
+            
     }
 }
 

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+//Delete View
+
+
+
 struct InitialView: View {
     var bounds = UIScreen.main.bounds
     @State var connected = false

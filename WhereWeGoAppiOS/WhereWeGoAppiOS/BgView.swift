@@ -21,7 +21,7 @@ struct BgView: View {
     
     var body: some View {
         Rectangle()
-            .fill(gradient(color1: .cyan, color2: .green))
+            .fill(gradient(color1: .blue, color2: .green))
             .blur(radius: 50, opaque: true)
             .frame(width: bounds.width * 3, height: bounds.height * 2, alignment: .center)
             .edgesIgnoringSafeArea(.all)
