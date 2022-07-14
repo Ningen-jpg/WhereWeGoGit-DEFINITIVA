@@ -11,6 +11,7 @@ import MultipeerConnectivity
 struct Profile1: Identifiable{
     var id = UUID()
     var name: String
+    var image: UIImage
 }
 
 
@@ -18,7 +19,8 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     
     let mpcManager = MPCManager.shared
     var answers: [Int] = [0, 0, 0, 0]
-    @Published var profiles: [Profile1] = [Profile1(name:"Username"), Profile1(name:"Username"), Profile1(name:"Username"), Profile1(name:"Username"), Profile1(name:"Username"), Profile1(name: "Username"), Profile1(name: "Username"), Profile1(name: "Username")]
+    @Published var profiles: [Profile1] = [Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!)]
+    
     @Published var count: Int = 0
     var numQuestion = 2;
     @Published var viewNumber: Int = 2
@@ -31,8 +33,10 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     
     func mpcManager(_ manager: MPCManager, didReceive message: Profile, from peer: MCPeerID) {
         let name = message.name
+        let image = UIImage(data: message.image!)
         if(count<7){
             profiles[count].name = name
+            profiles[count].image = image!
             print(count)
             count += 1
             print(count)

@@ -12,8 +12,9 @@ struct SetUpView: View {
     var bounds = UIScreen.main.bounds
     @State var connected = false
     @State var username: String = ""
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
+    var imageData: Data? = nil
     @State private var isImagePickerDisplay = false
     @Binding var viewNumber: Int
     let nearBlack = Color(red: 0.1, green: 0.1, blue: 0.1, opacity: 1)
@@ -60,13 +61,16 @@ struct SetUpView: View {
                                 .frame(width: bounds.width * 0.5, height: bounds.height * 0.25)
                                 
                         })
+//                        .onAppear(){
+//                            imageData = selectedImage?.pngData()
+//                        }
                             
                         
                         
                     } else {
                         Button(action: {
                             
-                            self.sourceType = .camera
+                            self.sourceType = .photoLibrary
                             self.isImagePickerDisplay.toggle()
                             
                             
@@ -155,7 +159,7 @@ struct SetUpView: View {
                 
                 Button(action: {
                     if connected {
-                        let profile = Profile(name: username)
+                        let profile = Profile(name: username, image: selectedImage?.pngData())
                         mpcManager.send(profile: profile)
                         self.viewNumber = 1
                     }

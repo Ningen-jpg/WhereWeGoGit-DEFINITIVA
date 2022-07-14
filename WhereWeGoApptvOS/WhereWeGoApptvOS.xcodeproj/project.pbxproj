@@ -21,6 +21,7 @@
 		85AEFA052874721000F871E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85AEFA042874721000F871E1 /* Assets.xcassets */; };
 		85AEFA082874721000F871E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85AEFA072874721000F871E1 /* Preview Assets.xcassets */; };
 		85BE35172874789B009E24A2 /* PreliminaryQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE35162874789B009E24A2 /* PreliminaryQuestion.swift */; };
+		85D1A02128806C0400DD86D2 /* PlayersView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D1A02028806C0400DD86D2 /* PlayersView2.swift */; };
 		85FBAF20287576DF00A080F3 /* Mare.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAF1F287576DF00A080F3 /* Mare.mp4 */; };
 		85FBAF222875789D00A080F3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAF212875789D00A080F3 /* PlayerView.swift */; };
 		85FBAF2428758D8C00A080F3 /* Questions.apns in Resources */ = {isa = PBXBuildFile; fileRef = 85FBAF2328758D8C00A080F3 /* Questions.apns */; };
@@ -46,6 +47,7 @@
 		85AEFA072874721000F871E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		85BD791C28788880002FA178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		85BE35162874789B009E24A2 /* PreliminaryQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreliminaryQuestion.swift; sourceTree = "<group>"; };
+		85D1A02028806C0400DD86D2 /* PlayersView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView2.swift; sourceTree = "<group>"; };
 		85FBAF1F287576DF00A080F3 /* Mare.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mare.mp4; sourceTree = "<group>"; };
 		85FBAF212875789D00A080F3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		85FBAF2328758D8C00A080F3 /* Questions.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Questions.apns; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				85AEFA062874721000F871E1 /* Preview Content */,
 				856A7C4A287716DC00A4BFEE /* Questions.swift */,
 				85FBAF212875789D00A080F3 /* PlayerView.swift */,
+				85D1A02028806C0400DD86D2 /* PlayersView2.swift */,
 			);
 			path = WhereWeGoApptvOS;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				85FBAF2628759E0800A080F3 /* JsonUtility.swift in Sources */,
 				856A7C4B287716DC00A4BFEE /* Questions.swift in Sources */,
 				854A5B9028747D4400CB3942 /* QuestionViewtvOS.swift in Sources */,
+				85D1A02128806C0400DD86D2 /* PlayersView2.swift in Sources */,
 				85AC4931287C14A5000FFD4B /* UserConnection.swift in Sources */,
 				85AEFA012874720F00F871E1 /* WhereWeGoApptvOSApp.swift in Sources */,
 			);

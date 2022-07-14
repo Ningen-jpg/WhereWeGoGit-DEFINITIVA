@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayersView: View {
+struct PlayersView2: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
@@ -83,25 +83,12 @@ struct PlayersView: View {
                     
                     HStack(spacing: bounds.width * 0.04) {
                         VStack {
-                            if(userConnection.count >= 1){
-                                Image(uiImage: userConnection.profiles[0].image)
-                                    .resizable()
-                                    .frame(width: bounds.width * 0.1, height: bounds.height * 0.16)
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    
-                            
+                            Image(uiImage: userConnection.profiles[0].image)
+                            .foregroundColor(.red)
                             .font(.system(size: bounds.width * 0.1))
-                            }
-                            else{
-                                Image(systemName: "person.circle.fill")
-                                    .foregroundColor(.red)
-                                    .font(.system(size: bounds.width * 0.1))
-                            }
-                        Text(userConnection.profiles[0].name)
-                            .foregroundColor(.black)
-                            .font(.system(size: bounds.height * 0.04, weight: .regular))
-                            
+                            Text(userConnection.profiles[0].name)
+                                .foregroundColor(.black)
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
                         }.scaleEffect(isConnecting ? 1.1 : 1.0)
                         .onAppear() {
                             withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true), {
@@ -261,10 +248,10 @@ struct PlayersView: View {
     }
 }
 
-struct PlayersView_Previews: PreviewProvider {
+struct PlayersView2_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PlayersView(viewNumber: .constant(Int(3)), userConnection: UserConnection())
+            PlayersView2(viewNumber: .constant(Int(3)), userConnection: UserConnection())
         }
 
     }

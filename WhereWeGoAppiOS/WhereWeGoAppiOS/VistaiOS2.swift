@@ -51,7 +51,7 @@ struct VistaiOS2: View {
                                 
                                 ZStack {
                                     Rectangle()
-                                        .foregroundColor(Color(red: 0.3, green: 0.87, blue: 0.3))
+                                        .foregroundColor(Color(red: 0.4, green: 0.80, blue: 0.3))
                                         .frame(width: bounds.size.width * 0.5, height: bounds.size.height * 0.5)
                                     
                                     Text("2")
@@ -77,7 +77,7 @@ struct VistaiOS2: View {
                                 
                                 ZStack {
                                     Rectangle()
-                                        .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.9))
+                                        .foregroundColor(Color(red: 0.3, green: 0.25, blue: 1.0))
                                         .frame(width: bounds.size.width * 0.5, height: bounds.size.height * 0.5)
                                     
                                     Text("3")
