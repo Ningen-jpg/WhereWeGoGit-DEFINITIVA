@@ -32,7 +32,7 @@ struct VistaiOS2: View {
                                     
                                     Text("1")
                                         .foregroundColor(.white)
-                                        .font(.system(size: bounds.width * 0.2, weight: .semibold, design: .default))
+                                        .font(.system(size: bounds.width * 0.25, weight: .bold, design: .default))
                                         
                                                         
                                 }
@@ -56,7 +56,7 @@ struct VistaiOS2: View {
                                     
                                     Text("2")
                                         .foregroundColor(.white)
-                                        .font(.system(size: bounds.width * 0.2, weight: .semibold, design: .default))
+                                        .font(.system(size: bounds.width * 0.25, weight: .bold, design: .default))
                                         
                                                         
                                 }
@@ -82,7 +82,7 @@ struct VistaiOS2: View {
                                     
                                     Text("3")
                                         .foregroundColor(.white)
-                                        .font(.system(size: bounds.width * 0.2, weight: .semibold, design: .default))
+                                        .font(.system(size: bounds.width * 0.25, weight: .bold, design: .default))
                                         
                                                         
                                 }
@@ -106,7 +106,7 @@ struct VistaiOS2: View {
                                     
                                     Text("4")
                                         .foregroundColor(.white)
-                                        .font(.system(size: bounds.width * 0.2, weight: .semibold, design: .default))
+                                        .font(.system(size: bounds.width * 0.25, weight: .bold, design: .default))
                                         
                                                         
                                 }
