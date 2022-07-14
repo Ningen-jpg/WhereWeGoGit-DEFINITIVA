@@ -5,6 +5,11 @@
 //  Created by Stefano Leva on 05/07/22.
 //
 
+
+//Eliminare View
+
+
+
 import SwiftUI
 
 struct PreliminaryQuestion: View {

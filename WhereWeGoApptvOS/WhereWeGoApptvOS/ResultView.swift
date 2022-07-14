@@ -13,6 +13,8 @@ struct ResultView: View {
     @ObservedObject var userConnection: UserConnection
     let mpcManager = MPCManager.shared
     
+    var bounds = UIScreen.main.bounds
+    
     let bgGradient = LinearGradient(colors: [.mint, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
     
     var myPreferredFocusedView: UIView?
@@ -23,11 +25,11 @@ struct ResultView: View {
         let detailsButton = Button(action: {}, label: {
             ZStack {
                 Rectangle()
-                    .frame(width: 350, height: 150)
-                    .foregroundColor(.green)
+                    .frame(width: bounds.width * 0.2, height: bounds.height * 0.15)
+                    .foregroundColor(.init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1))
             Text("Details")
                 .foregroundColor(.white)
-                .font(.system(size: 70, weight: .semibold))
+                .font(.system(size: bounds.height * 0.07, weight: .semibold))
             }
         }).buttonStyle(.plain)
             .buttonBorderShape(.roundedRectangle)
@@ -38,12 +40,12 @@ struct ResultView: View {
             PlayerView(video: "Mare")
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
-                
+            
+            VStack(spacing: bounds.height * 0.4) {
                 
                 
                 Spacer()
-                HStack {
+                HStack(spacing: bounds.width * 0.05) {
                     Spacer()
                     Button(action: {
                         mpcManager.send(message: userConnection.ready)
@@ -51,11 +53,11 @@ struct ResultView: View {
                     }, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: 200, height: 150)
+                                .frame(width: bounds.width * 0.12, height: bounds.height * 0.15)
                                 .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
                                 
                         Image(systemName: "house.fill")
-                                .font(.system(size: 70))
+                                .font(.system(size: bounds.height * 0.07))
                                 .foregroundColor((.init(white: 0.3)))
                                 
                         }
@@ -72,12 +74,12 @@ struct ResultView: View {
                     Button(action: {}, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: 200, height: 150)
+                                .frame(width: bounds.width * 0.12, height: bounds.height * 0.15)
                                 .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
                                 
-                        Text("Skip")
+                        Text("Next")
                                 .foregroundColor((.init(white: 0.3)))
-                                .font(.system(size: 60, weight: .semibold))
+                                .font(.system(size: bounds.height * 0.065, weight: .semibold))
                         }
                     }).buttonStyle(.plain)
                         .buttonBorderShape(.roundedRectangle)
@@ -86,7 +88,7 @@ struct ResultView: View {
                                 
                                 
                           Spacer()
-                }.padding(.bottom, 80)
+                }.padding(.bottom)
                     .focusScope(mainNamespace)
             }
             
@@ -94,8 +96,8 @@ struct ResultView: View {
     }
 }
 
-//struct ResultViewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ResultView(viewNumber: .constant(Int(3)))
-//    }
-//}
+struct ResultViewView_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultView(viewNumber: .constant(Int(3)), userConnection: UserConnection())
+    }
+}
