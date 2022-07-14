@@ -12,6 +12,8 @@ class MPCManager: NSObject {
     
     static let shared: MPCManager = MPCManager()
     
+    var result = false
+    
     private let peerID :MCPeerID = MCPeerID(displayName: UIDevice.current.name)
     
     private lazy var session: MCSession =

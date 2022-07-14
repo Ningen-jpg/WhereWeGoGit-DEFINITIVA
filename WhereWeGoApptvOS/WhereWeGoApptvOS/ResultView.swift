@@ -49,7 +49,8 @@ struct ResultView: View {
                     Spacer()
                     Button(action: {
                         mpcManager.send(message: userConnection.ready)
-                        viewNumber = 2
+                        mpcManager.result = false
+                        viewNumber = 0
                     }, label: {
                         ZStack {
                             Rectangle()

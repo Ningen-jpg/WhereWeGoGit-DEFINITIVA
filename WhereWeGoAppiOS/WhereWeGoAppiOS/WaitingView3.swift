@@ -144,6 +144,7 @@ struct WaitingView3: View {
                     .onAppear(){
                         print("numero")
                         ready = false
+                        mpcManager.end = false
                         viewNumber = 3
                     }
             }

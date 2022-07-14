@@ -11,6 +11,7 @@ struct PlayersView: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
+    @State var users = false
     @State private var isConnecting = false
     
     @ObservedObject var userConnection: UserConnection
@@ -48,10 +49,16 @@ struct PlayersView: View {
     
     var body: some View {
         
-        
-        
-        
         ZStack {
+            
+            Text("Title")
+            .onAppear(){
+                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                    if(userConnection.count > 0){
+                        users.toggle()
+                    }
+                }
+            }
             
             PlayerView(video: "Mare")
                 .edgesIgnoringSafeArea(.all)
@@ -208,9 +215,9 @@ struct PlayersView: View {
                         ZStack {
                             Rectangle()
                                 .frame(width: bounds.width * 0.13, height: bounds.height * 0.1)
-                                .foregroundColor(.init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1))
+                                .foregroundColor(users ? .init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1) : .gray)
                         Text("Start")
-                            .foregroundColor(.white)
+                                .foregroundColor(users ? .white : .black)
                             .font(.system(size: bounds.height * 0.06, weight: .semibold))
                         }
                     }).padding()

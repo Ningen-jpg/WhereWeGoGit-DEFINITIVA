@@ -12,6 +12,7 @@ import AVFoundation
 struct QuestionViewtvOS: View {
     @Binding var viewNumber: Int
     @ObservedObject var userConnection: UserConnection
+    @State private var isValid = false
     @State private var isAsking = false
 
     struct BlurView: UIViewRepresentable {
@@ -55,23 +56,25 @@ struct QuestionViewtvOS: View {
         
         ZStack{
             
-            Text("Title")
+            
+                Text("Title")
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                        if(userConnection.numQuestion != viewNumber){
+                        if(userConnection.numQuestion != viewNumber && !mpcManager.result){
                             print(viewNumber)
                             if(userConnection.numQuestion == 12){
                                 userConnection.numQuestion = 2
+                                mpcManager.result = true
                                 viewNumber = 12
+                                timer.invalidate()
                             }
                             else{
                                 viewNumber = userConnection.numQuestion
                             }
-                            
+                        }
                     }
                        
                 }
-            }
             
             //Call PlayerView for Looped Videos
 
