@@ -214,10 +214,10 @@ struct PlayersView: View {
                     }, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: bounds.width * 0.13, height: bounds.height * 0.1)
-                                .foregroundColor(users ? .init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1) : .gray)
+                                .frame(width: bounds.width * 0.13, height: bounds.height * 0.085)
+                                .foregroundColor(users ? .init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1) : .init(red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
                         Text("Start")
-                                .foregroundColor(users ? .white : .black)
+                                .foregroundColor(users ? .white : .init(red: 0.5, green: 0.5, blue: 0.5, opacity: 1))
                             .font(.system(size: bounds.height * 0.06, weight: .semibold))
                         }
                     })

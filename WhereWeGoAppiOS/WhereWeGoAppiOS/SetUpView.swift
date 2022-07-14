@@ -169,6 +169,7 @@ struct SetUpView: View {
                             .foregroundColor(connected ? .white : Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
                             .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
                             .cornerRadius(bounds.width * 0.02)
+                            .shadow(color: .init(white: 0, opacity: connected ? 1 : 0), radius: 18, x: 0, y: 15)
                             
                         
                             Text("Send")
@@ -184,6 +185,9 @@ struct SetUpView: View {
                     .onAppear() {
                         mpcManager.startService()
                     }
+                    .scaleEffect(connected ? 1.1 : 1.0)
+                    
+                    
                 
                 
                 
