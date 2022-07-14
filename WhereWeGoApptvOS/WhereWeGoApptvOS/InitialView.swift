@@ -20,16 +20,16 @@ struct InitialView: View {
             VStack{
                 Spacer()
                 
-                HStack(spacing: 150){
+                HStack(spacing: bounds.width * 0.1){
                                 Button(action: {
                                     viewNumber = 1
                                 }, label: {
                                     Rectangle()
                                         .frame(width: bounds.width*0.18, height: bounds.height*0.2)
-                                        .foregroundColor(.init(red: 0.3, green: 0.85, blue: 0.3, opacity: 1))
+                                        .foregroundColor(.init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1))
                                         .overlay(content: {
                                             Image(systemName: "questionmark.circle.fill")
-                                                .font(.system(size: 160, weight: .medium, design: .default))
+                                                .font(.system(size: bounds.width * 0.08, weight: .medium, design: .default))
                                                 .foregroundColor(.init(red: 0.9, green: 0.1, blue: 0.1, opacity: 1))
                                         })
                                     
@@ -45,15 +45,15 @@ struct InitialView: View {
                                         .foregroundColor(.init(red: 0.8, green: 0.8, blue: 0.8, opacity: 1))
                                         .overlay(content: {
                                             Image(systemName: "globe")
-                                                .font(.system(size: 145, weight: .medium, design: .default))
-                                                .foregroundColor(.gray)
+                                                .font(.system(size: bounds.width * 0.08, weight: .medium, design: .default))
+                                                .foregroundColor(.init(white: 0.2))
                                         })
                                 }).buttonStyle(.plain)
                         .buttonBorderShape(.roundedRectangle)
                                 
                                 
                                
-                }.padding(.bottom, 100)
+                }.padding(.bottom, bounds.height * 0.06)
             }
             
             

@@ -12,6 +12,7 @@ import AVFoundation
 struct QuestionViewtvOS: View {
     @Binding var viewNumber: Int
     @ObservedObject var userConnection: UserConnection
+    @State private var isAsking = false
 
     struct BlurView: UIViewRepresentable {
 
@@ -79,9 +80,9 @@ struct QuestionViewtvOS: View {
 
             
 
-            VStack(spacing:100){
+            VStack(spacing: bounds.height * 0.075){
 
-                HStack(spacing:100){
+                HStack(spacing: bounds.height * 0.075){
 
                   
 
@@ -103,8 +104,13 @@ struct QuestionViewtvOS: View {
 
                         Text("\(question.option1)")
                             .tint(.white)
-                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .font(.system(size: bounds.height * 0.08, weight: .bold, design: .default))
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }.scaleEffect(isAsking ? 1.06 : 1.0)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                isAsking.toggle()
+                            })
                         }
                     
                         Spacer()
@@ -127,15 +133,21 @@ struct QuestionViewtvOS: View {
 
                         Text("\(question.option2)")
                             .tint(.white)
-                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .font(.system(size: bounds.height * 0.08, weight: .bold, design: .default))
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }.scaleEffect(isAsking ? 1.06 : 1.0)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                isAsking.toggle()
+                            })
                         }
+                    
                 }
-                .frame(width: 1700, height: 400)
+                .frame(width: bounds.width * 0.9, height: bounds.height * 0.35)
 
                 Spacer()
 
-                HStack(spacing:100){
+                HStack(spacing: bounds.height * 0.075){
 
                     ZStack {
 
@@ -155,8 +167,13 @@ struct QuestionViewtvOS: View {
 
                         Text("\(question.option3)")
                             .tint(.white)
-                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .font(.system(size: bounds.height * 0.08, weight: .bold, design: .default))
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }.scaleEffect(isAsking ? 1.06 : 1.0)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                isAsking.toggle()
+                            })
                         }
 
                     Spacer()
@@ -179,11 +196,17 @@ struct QuestionViewtvOS: View {
 
                         Text("\(question.option4)")
                             .tint(.white)
-                            .font(.system(size: 80.0, weight: .bold, design: .default))
+                            .font(.system(size: bounds.height * 0.08, weight: .bold, design: .default))
                             .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                        }.scaleEffect(isAsking ? 1.06 : 1.0)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                isAsking.toggle()
+                            })
                         }
+                    
                 }
-                .frame(width: 1700, height: 400)
+                .frame(width: bounds.width * 0.9, height: bounds.height * 0.35)
 
             }
 
@@ -220,8 +243,13 @@ struct QuestionViewtvOS: View {
 
                     Text("\(question.question)")
                         .tint(.white)
-                        .font(.system(size: 80.0, weight: .bold, design: .default))
+                        .font(.system(size: bounds.height * 0.08, weight: .bold, design: .default))
                         .frame(width: bounds.size.width * 0.25, height: bounds.size.height * 0.25)
+                    }.scaleEffect(isAsking ? 1.06 : 1.0)
+                    .onAppear() {
+                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                            isAsking.toggle()
+                        })
                     }
 
 
@@ -234,8 +262,8 @@ struct QuestionViewtvOS: View {
     }
 }
 
-//struct QuestionViewtvOS_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuestionViewtvOS(viewNumber: .constant(Int(3)), question: Question(question: "Domanda", option1: "1", option2: "2", option3: "3", option4: "4"))
-//    }
-//}
+struct QuestionViewtvOS_Previews: PreviewProvider {
+    static var previews: some View {
+        QuestionViewtvOS(viewNumber: .constant(Int(3)), userConnection: UserConnection(), question: Question(question: "Domanda", option1: "1", option2: "2", option3: "3", option4: "4"))
+    }
+}

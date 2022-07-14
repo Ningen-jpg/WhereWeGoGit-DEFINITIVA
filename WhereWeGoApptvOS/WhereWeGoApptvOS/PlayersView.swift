@@ -11,6 +11,7 @@ struct PlayersView: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
+    @State private var isConnecting = false
     
     @ObservedObject var userConnection: UserConnection
     //    @State var profiles: [Profile] = userConnection.profiles
@@ -62,7 +63,7 @@ struct PlayersView: View {
                     .mask({
                         Rectangle()
                             .cornerRadius(30)
-                            .frame(width: bounds.width * 0.65, height: bounds.height * 0.8, alignment: .center)
+                            .frame(width: bounds.width * 0.7, height: bounds.height * 0.8, alignment: .center)
                             
                         
                     })
@@ -71,81 +72,132 @@ struct PlayersView: View {
 //                    .frame(width: bounds.width * 0.65, height: bounds.height * 0.8, alignment: .center)
 //                                .cornerRadius(60)
                 
-                VStack {
+                VStack(spacing: bounds.height * 0.02) {
                     
-                    HStack {
+                    HStack(spacing: bounds.width * 0.04) {
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.red)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[0].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                        .onAppear() {
+                            withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true), {
+                                isConnecting.toggle()
+                            })
                         }
+                        
+                        
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.orange)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[1].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.yellow)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[2].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.green)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[3].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
                     }.padding()
                     
-                    HStack {
+                    HStack(spacing: bounds.width * 0.05) {
                         
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.cyan)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[4].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.indigo)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[5].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
                         VStack {
                         Image(systemName: "person.circle.fill")
                             .foregroundColor(.purple)
-                            .font(.system(size: 170))
+                            .font(.system(size: bounds.width * 0.1))
                             Text(userConnection.profiles[6].name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
-                        VStack {
-                        Image(systemName: "person.circle.fill")
-                                .foregroundColor(.pink)
-                            .font(.system(size: 170))
-                            Text(userConnection.profiles[7].name)
-                                .foregroundColor(.black)
-                                .font(.system(size: 40))
-                        }
+                                .font(.system(size: bounds.height * 0.04, weight: .regular))
+                        }.scaleEffect(isConnecting ? 1.1 : 1.0)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), {
+                                    isConnecting.toggle()
+                                })
+                            }
+                            
+                            
+//                        VStack {
+//                        Image(systemName: "person.circle.fill")
+//                                .foregroundColor(.pink)
+//                            .font(.system(size: bounds.width * 0.1))
+//                            Text(userConnection.profiles[7].name)
+//                                .foregroundColor(.black)
+//                                .font(.system(size: 40))
+//                        }
                         
                     }.padding()
                     
                     
+                    
+                    //gray and off if no peer connected
                     Button(action: {
                         if(userConnection.count > 0){
                             let message = "Start Quiz"
@@ -155,16 +207,16 @@ struct PlayersView: View {
                     }, label: {
                         ZStack {
                             Rectangle()
-                                .frame(width: 250, height: 100)
-                                .foregroundColor(.green)
+                                .frame(width: bounds.width * 0.13, height: bounds.height * 0.1)
+                                .foregroundColor(.init(red: 0.04, green: 0.73, blue: 0.04, opacity: 1))
                         Text("Start")
                             .foregroundColor(.white)
-                            .font(.system(size: 60, weight: .semibold))
+                            .font(.system(size: bounds.height * 0.06, weight: .semibold))
                         }
                     }).padding()
                         .buttonStyle(.plain)
                         .buttonBorderShape(.roundedRectangle)
-                        .offset(x: 0, y: 20)
+                    
                     
                     
                 }
@@ -187,11 +239,11 @@ struct PlayersView: View {
     }
 }
 
-//struct PlayersView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            PlayersView(viewNumber: .constant(Int(3)))
-//        }
-//
-//    }
-//}
+struct PlayersView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            PlayersView(viewNumber: .constant(Int(3)), userConnection: UserConnection())
+        }
+
+    }
+}
