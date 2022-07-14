@@ -20,17 +20,26 @@ struct BgView: View {
     
     
     var body: some View {
+        ZStack {
+        
         Rectangle()
             .fill(gradient(color1: .blue, color2: .green))
-            .blur(radius: 50, opaque: true)
+            .blur(radius: 200, opaque: true)
             .frame(width: bounds.width * 3, height: bounds.height * 2, alignment: .center)
             .edgesIgnoringSafeArea(.all)
             .rotationEffect(Angle(degrees: isBgRotating ? 360 : 0))
             .onAppear() {
-                withAnimation(.linear.speed(0.03).repeatForever(autoreverses: false), {
+                withAnimation(.linear.speed(0.07).repeatForever(autoreverses: false), {
                     isBgRotating.toggle()
                 })
             }
+        
+            Rectangle()
+                .foregroundColor(.init(white: 1, opacity: 0.2))
+            
+            
+        }
+        
     }
 }
 

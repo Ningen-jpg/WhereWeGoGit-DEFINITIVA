@@ -41,6 +41,10 @@ struct VistaiOS2: View {
                             })
                             
                             redButton
+                                .buttonStyle(.plain)
+                                
+                            
+                            
                             
                             let greenButton = Button(action: {
                                 let message = Message(answer: 1)
@@ -65,6 +69,10 @@ struct VistaiOS2: View {
                             })
                             
                             greenButton
+                                .buttonStyle(.plain)
+                            
+                            
+                            
                         }
                         
                         HStack(spacing:0){
@@ -91,6 +99,11 @@ struct VistaiOS2: View {
                             })
                             
                             blueButton
+                                .buttonStyle(.plain)
+                            
+                            
+                            
+                            
                             
                             let purpleButton = Button(action: {
                                 let message = Message(answer: 3)
@@ -115,6 +128,10 @@ struct VistaiOS2: View {
                             })
                             
                             purpleButton
+                                .buttonStyle(.plain)
+                            
+                            
+                            
                         }
                     }.edgesIgnoringSafeArea(.all)
         
