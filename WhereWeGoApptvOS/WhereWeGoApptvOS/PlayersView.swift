@@ -61,7 +61,8 @@ struct PlayersView: View {
                                 Image(uiImage: userConnection.profiles[0].image)
                                     .resizable()
                                     .frame(width: bounds.width * 0.1, height: bounds.height * 0.16)
-                                    .scaledToFit()
+                                    .rotationEffect(Angle(degrees: 90))
+                                    .scaledToFill()
                                     .clipShape(Circle())
                                     
                             

@@ -48,7 +48,7 @@ struct SetUpView: View {
                     if selectedImage != nil {
                         Button(action: {
                             
-                            self.sourceType = .camera
+                            self.sourceType = .photoLibrary
                             self.isImagePickerDisplay.toggle()
                             
                         }, label: {
