@@ -19,31 +19,7 @@ struct WaitingView2: View {
     @State var waitingText2 = "Waiting for other players to answer"
     let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
     
-    struct BlurView: UIViewRepresentable {
 
-        let style: UIBlurEffect.Style
-
-        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
-            let view = UIView(frame: .zero)
-            view.backgroundColor = .clear
-            let blurEffect = UIBlurEffect(style: style)
-            let blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.translatesAutoresizingMaskIntoConstraints = false
-            view.insertSubview(blurView, at: 0)
-            NSLayoutConstraint.activate([
-                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
-                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            ])
-            return view
-        }
-
-        func updateUIView(_ uiView: UIView,
-                          context: UIViewRepresentableContext<BlurView>) {
-            
-
-        }
-
-    }
     
     func gradient(color1: Color, color2: Color) -> LinearGradient {
         LinearGradient(colors: [color1, color2], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -125,7 +101,7 @@ struct WaitingView2: View {
                             
                             Text("\(waitingText2)")
                                 .foregroundColor(.white)
-                                .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
+                                .font(.system(size: bounds.width * 0.06, weight: .medium, design: .default))
                                 .frame(width: bounds.width * 0.6)
                                 .multilineTextAlignment(.center)
                                         .onReceive(timer) { _ in
@@ -150,11 +126,13 @@ struct WaitingView2: View {
                         if(ready){
                             print("numero")
                             ready = false
+                            mpcManager.ready = false
                             viewNumber = 3
                         }
                         if(end){
                             print("numero")
                             end = false
+                            mpcManager.end = false
                             viewNumber = 5
                         }
                     }

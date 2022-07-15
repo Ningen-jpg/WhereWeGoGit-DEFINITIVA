@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		851D8CCC2881B15400653527 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851D8CCB2881B15400653527 /* BlurView.swift */; };
+		851D8CCE2881B2DD00653527 /* RsgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851D8CCD2881B2DD00653527 /* RsgView.swift */; };
 		854A5B9028747D4400CB3942 /* QuestionViewtvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A5B8F28747D4400CB3942 /* QuestionViewtvOS.swift */; };
 		85611F3B2874A6950067855D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F3A2874A6950067855D /* Message.swift */; };
 		85611F3F2874A9280067855D /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F3E2874A9280067855D /* MPCManager.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		851D8CCB2881B15400653527 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		851D8CCD2881B2DD00653527 /* RsgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsgView.swift; sourceTree = "<group>"; };
 		854A5B8F28747D4400CB3942 /* QuestionViewtvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewtvOS.swift; sourceTree = "<group>"; };
 		85611F3A2874A6950067855D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		85611F3E2874A9280067855D /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
@@ -114,8 +118,10 @@
 				85AEFA042874721000F871E1 /* Assets.xcassets */,
 				85AEFA062874721000F871E1 /* Preview Content */,
 				856A7C4A287716DC00A4BFEE /* Questions.swift */,
+				851D8CCB2881B15400653527 /* BlurView.swift */,
 				85FBAF212875789D00A080F3 /* PlayerView.swift */,
 				85D1A02028806C0400DD86D2 /* PlayersView2.swift */,
+				851D8CCD2881B2DD00653527 /* RsgView.swift */,
 			);
 			path = WhereWeGoApptvOS;
 			sourceTree = "<group>";
@@ -204,7 +210,9 @@
 				85AC492F287C144C000FFD4B /* Profile.swift in Sources */,
 				85FBAF282875CECC00A080F3 /* setQuestionView.swift in Sources */,
 				857B746228749F7700552DB9 /* Question.swift in Sources */,
+				851D8CCE2881B2DD00653527 /* RsgView.swift in Sources */,
 				85BE35172874789B009E24A2 /* PreliminaryQuestion.swift in Sources */,
+				851D8CCC2881B15400653527 /* BlurView.swift in Sources */,
 				85AC4939287C77DD000FFD4B /* ResultView.swift in Sources */,
 				85AEFA032874720F00F871E1 /* ContentView.swift in Sources */,
 				85AC4935287C4DE4000FFD4B /* PlayersView.swift in Sources */,
@@ -345,7 +353,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhereWeGoApptvOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6KG7K2WG9J;
+				DEVELOPMENT_TEAM = WU677RRT6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhereWeGoApptvOS/Info.plist;
@@ -357,7 +365,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "Stefano-Leva.PartyEat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,7 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhereWeGoApptvOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6KG7K2WG9J;
+				DEVELOPMENT_TEAM = WU677RRT6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhereWeGoApptvOS/Info.plist;
@@ -385,7 +393,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "Stefano-Leva.PartyEat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

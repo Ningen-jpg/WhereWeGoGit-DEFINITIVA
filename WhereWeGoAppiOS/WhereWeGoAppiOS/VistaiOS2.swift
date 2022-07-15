@@ -18,7 +18,7 @@ struct VistaiOS2: View {
             VStack(spacing:0){
                         HStack(spacing:0){
                             
-                            let redButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 0)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -38,15 +38,15 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(.plain)
                             
-                            redButton
-                                .buttonStyle(.plain)
+                            
+                                
                                 
                             
                             
                             
-                            let greenButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 1)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -66,17 +66,14 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
-                            
-                            greenButton
-                                .buttonStyle(.plain)
+                            }).buttonStyle(.plain)
                             
                             
                             
                         }
                         
                         HStack(spacing:0){
-                            let blueButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 2)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -96,16 +93,13 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
-                            
-                            blueButton
-                                .buttonStyle(.plain)
+                            }).buttonStyle(.plain)
                             
                             
                             
                             
                             
-                            let purpleButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 3)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -125,10 +119,7 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
-                            
-                            purpleButton
-                                .buttonStyle(.plain)
+                            }).buttonStyle(.plain)
                             
                             
                             

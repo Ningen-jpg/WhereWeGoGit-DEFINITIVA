@@ -10,6 +10,7 @@
 		0404A9102880436300DD0B65 /* VistaiOS2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404A90F2880436300DD0B65 /* VistaiOS2.swift */; };
 		045B90CA287E39340038E596 /* BgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B90C9287E39340038E596 /* BgView.swift */; };
 		850E10BF28786D3600DB3B2C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850E10BE28786D3600DB3B2C /* Profile.swift */; };
+		851D8CD22881B41B00653527 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851D8CD12881B41B00653527 /* BlurView.swift */; };
 		854A5B8E28747C8200CB3942 /* VistaiOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A5B8D28747C8200CB3942 /* VistaiOS.swift */; };
 		85611F3D2874A6A30067855D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F3C2874A6A30067855D /* Message.swift */; };
 		85611F412874A9350067855D /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F402874A9350067855D /* MPCManager.swift */; };
@@ -30,6 +31,7 @@
 		0404A90F2880436300DD0B65 /* VistaiOS2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaiOS2.swift; sourceTree = "<group>"; };
 		045B90C9287E39340038E596 /* BgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BgView.swift; sourceTree = "<group>"; };
 		850E10BE28786D3600DB3B2C /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		851D8CD12881B41B00653527 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		854A5B8D28747C8200CB3942 /* VistaiOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistaiOS.swift; sourceTree = "<group>"; };
 		85611F3C2874A6A30067855D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		85611F402874A9350067855D /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
@@ -93,8 +95,8 @@
 				85AEF9E8287471E900F871E1 /* ContentView.swift */,
 				856A7C4E287721CA00A4BFEE /* InitialView.swift */,
 				856A7C5028772AA100A4BFEE /* SetUpView.swift */,
-				85AC4932287C4DC5000FFD4B /* WaitingView.swift */,
 				854A5B8D28747C8200CB3942 /* VistaiOS.swift */,
+				85AC4932287C4DC5000FFD4B /* WaitingView.swift */,
 				85AC4936287C5298000FFD4B /* WaitingView2.swift */,
 				85F3A9F9287F207C00BCAF9A /* WaitingView3.swift */,
 				85D1A01E288027F500DD86D2 /* WaitingView4.swift */,
@@ -104,6 +106,7 @@
 				85AEF9EC287471EB00F871E1 /* Preview Content */,
 				045B90C9287E39340038E596 /* BgView.swift */,
 				0404A90F2880436300DD0B65 /* VistaiOS2.swift */,
+				851D8CD12881B41B00653527 /* BlurView.swift */,
 			);
 			path = WhereWeGoAppiOS;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				85611F412874A9350067855D /* MPCManager.swift in Sources */,
 				856A7C5428772FFB00A4BFEE /* ImagePickerView.swift in Sources */,
 				85AEF9E9287471E900F871E1 /* ContentView.swift in Sources */,
+				851D8CD22881B41B00653527 /* BlurView.swift in Sources */,
 				85F3A9FA287F207C00BCAF9A /* WaitingView3.swift in Sources */,
 				856A7C4F287721CA00A4BFEE /* InitialView.swift in Sources */,
 				856A7C5128772AA100A4BFEE /* SetUpView.swift in Sources */,
@@ -329,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhereWeGoAppiOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6KG7K2WG9J;
+				DEVELOPMENT_TEAM = WU677RRT6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhereWeGoAppiOS/Info.plist;
@@ -345,7 +349,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "stefanoleva.PartyEat-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -361,7 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhereWeGoAppiOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6KG7K2WG9J;
+				DEVELOPMENT_TEAM = WU677RRT6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhereWeGoAppiOS/Info.plist;
@@ -377,7 +381,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "stefanoleva.PartyEat-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

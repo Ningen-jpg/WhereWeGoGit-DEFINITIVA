@@ -98,9 +98,6 @@
 //                            })
 //                            .frame(width: bounds.width * 0.5, height: bounds.height * 0.12)
 //                        
-////                            Text("Please, wait...")
-////                            .foregroundColor(.white)
-////                            .font(.system(size: 25, weight: .medium, design: .default))
 //                        
 //                        Text("\(waitingText)")
 //                            .foregroundColor(.white)

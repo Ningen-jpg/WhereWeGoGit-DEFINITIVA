@@ -48,7 +48,7 @@ struct ResultView: View {
                 HStack(spacing: bounds.width * 0.05) {
                     Spacer()
                     Button(action: {
-                        mpcManager.send(message: userConnection.ready)
+                        mpcManager.send(message: userConnection.rewind)
                         mpcManager.result = false
                         viewNumber = 0
                     }, label: {

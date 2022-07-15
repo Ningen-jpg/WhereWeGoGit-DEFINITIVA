@@ -19,7 +19,7 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     
     let mpcManager = MPCManager.shared
     var answers: [Int] = [0, 0, 0, 0]
-    @Published var profiles: [Profile1] = [Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username", image: UIImage(systemName: "person.circle.fill")!)]
+    @Published var profiles: [Profile1] = [Profile1(name:"Username1", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username2", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username3", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username4", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username5", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username6", image: UIImage(systemName: "person.circle.fill")!), Profile1(name:"Username7", image: UIImage(systemName: "person.circle.fill")!)]
     
     @Published var count: Int = 0
     var numQuestion = 2;
@@ -27,16 +27,22 @@ class UserConnection: ObservableObject, MPCManagerDelegate {
     @Published var countAnswers: Int = 0
     let ready = "Ready"
     let end = "End"
+    let rewind = "Rewind"
     init() {
         mpcManager.delegate = self
     }
     
     func mpcManager(_ manager: MPCManager, didReceive message: Profile, from peer: MCPeerID) {
-        let name = message.name
-        let image = UIImage(data: message.image!)
+        
         if(count<7){
+            let name = message.name
             profiles[count].name = name
-            profiles[count].image = image!
+            if let data = message.image {
+                if let image = UIImage(data: data){
+                    profiles[count].image = image
+                }
+            }
+           
             print(count)
             count += 1
             print(count)

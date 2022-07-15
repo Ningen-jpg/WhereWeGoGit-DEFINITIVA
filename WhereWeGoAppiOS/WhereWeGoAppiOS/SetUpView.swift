@@ -68,7 +68,7 @@ struct SetUpView: View {
                         
                         
                     } else {
-                        isImageSelected = true
+//                        isImageSelected = true
                         Button(action: {
                             
                             self.sourceType = .photoLibrary

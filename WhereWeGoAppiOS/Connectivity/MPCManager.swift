@@ -16,6 +16,7 @@ class MPCManager: NSObject {
     @Published var quiz = false
     @Published var ready = false
     @Published var end = false
+    @Published var rewind = false
     
     private let peerID :MCPeerID = MCPeerID(displayName: UIDevice.current.name)
     
@@ -147,6 +148,10 @@ extension MPCManager: MCSessionDelegate{
             case "End":
                 end = true
                 print(end)
+                print(message)
+            case "Rewind":
+                rewind = true
+                print(rewind)
                 print(message)
             default: print("default")
         }
