@@ -283,9 +283,8 @@ struct PlayersView: View {
                     
                     Button(action: {
                         if(userConnection.count > 0){
-                            let message = "Start Quiz"
-                            mpcManager.send(message: message)
-                            viewNumber = 2
+                            
+                            viewNumber = 100
                         }
                     }, label: {
                         ZStack {

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RsgView: View {
+    @Binding var viewNumber: Int
+    let mpcManager = MPCManager.shared
     @State var goText = "Ready"
     @State var goTextColor = Color(.red)
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -41,12 +43,16 @@ struct RsgView: View {
                                     .frame(width: bounds.width * 0.5)
                                     .multilineTextAlignment(.center)
                                             .onReceive(timer) { _ in
-                                                if goText == "Ready" {
+                                                if (goText == "Ready") {
                                                     goText = "Set"
                                                     goTextColor = Color(.yellow)
-                                                } else if goText == "Set" {
+                                                } else if (goText == "Set") {
                                                     goText = "Go"
                                                     goTextColor = Color(.green)
+                                                } else if (goText == "Go") {
+                                                    let message = "Start Quiz"
+                                                    mpcManager.send(message: message)
+                                                    viewNumber = 2
                                                 } else {
                                                     
                                                 }
@@ -58,6 +64,6 @@ struct RsgView: View {
 
 struct RsgView_Previews: PreviewProvider {
     static var previews: some View {
-        RsgView()
+        RsgView(viewNumber: .constant(Int(3)))
     }
 }
