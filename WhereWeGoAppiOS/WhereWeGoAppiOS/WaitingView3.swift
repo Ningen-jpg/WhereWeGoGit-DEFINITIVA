@@ -63,13 +63,13 @@ struct WaitingView3: View {
                 
             
                 VStack{
-                    Image(systemName: "arrow.up.circle.fill")
+                    Image(systemName: "airplane")
                         .font(.system(size: bounds.width * 0.3))
                                     .foregroundColor(.white)
                                     .frame(width: bounds.width * 0.4, height: bounds.height * 0.2)
 //                                    .scaleEffect(isLoading ? 1.2 : 1.0)
-                                    .offset(x: 0, y: isLoading ? -50 : 0)
-//                                    .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                    .offset(x: isLoading ? bounds.height * 0.1 : 0, y: 0)
+                                    .rotationEffect(Angle(degrees: 270))
                                     .onAppear() {
                                         withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), {
                                             isLoading.toggle()
@@ -79,7 +79,7 @@ struct WaitingView3: View {
                     ZStack {
                     
                         ZStack {
-                            BlurView(style: .systemThickMaterialDark)
+                            BlurView(style: .systemThinMaterialLight)
                                 .mask({
                                     Rectangle()
                                         .cornerRadius(10)
@@ -95,7 +95,7 @@ struct WaitingView3: View {
     //                                .multilineTextAlignment(.center)
                             
                             Text("\(waitingText2)")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
                                 .frame(width: bounds.width * 0.6)
                                 .multilineTextAlignment(.center)
@@ -127,6 +127,10 @@ struct WaitingView3: View {
             }
         }
         .onAppear(){
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.notification(type: .error)
             mpcManager.rewind = false
     }
 }

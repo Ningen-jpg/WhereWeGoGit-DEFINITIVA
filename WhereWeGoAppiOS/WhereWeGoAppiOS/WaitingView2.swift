@@ -84,7 +84,7 @@ struct WaitingView2: View {
                     ZStack {
                     
                         ZStack {
-                            BlurView(style: .systemThickMaterialDark)
+                            BlurView(style: .systemThinMaterialLight)
                                 .mask({
                                     Rectangle()
                                         .cornerRadius(10)
@@ -100,7 +100,7 @@ struct WaitingView2: View {
     //                                .multilineTextAlignment(.center)
                             
                             Text("\(waitingText2)")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: bounds.width * 0.06, weight: .medium, design: .default))
                                 .frame(width: bounds.width * 0.6)
                                 .multilineTextAlignment(.center)

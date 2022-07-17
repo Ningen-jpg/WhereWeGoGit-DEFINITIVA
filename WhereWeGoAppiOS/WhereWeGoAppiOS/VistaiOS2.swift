@@ -125,6 +125,12 @@ struct VistaiOS2: View {
                             
                         }
                     }.edgesIgnoringSafeArea(.all)
+            .onAppear(perform: {
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.notification(type: .error)
+            })
         
         
     }
