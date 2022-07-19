@@ -11,6 +11,7 @@ struct ResultView: View {
     @Namespace var mainNamespace
     @Binding var viewNumber: Int
     @ObservedObject var userConnection: UserConnection
+    @State private var isDetailsViewDisplayed = false
     let mpcManager = MPCManager.shared
     
     var bounds = UIScreen.main.bounds
@@ -22,7 +23,9 @@ struct ResultView: View {
     
     var body: some View {
         
-        let detailsButton = Button(action: {}, label: {
+        let detailsButton = Button(action: {
+            self.isDetailsViewDisplayed.toggle()
+        }, label: {
             ZStack {
                 Rectangle()
                     .frame(width: bounds.width * 0.2, height: bounds.height * 0.15)
@@ -48,7 +51,7 @@ struct ResultView: View {
                 HStack(spacing: bounds.width * 0.05) {
                     Spacer()
                     Button(action: {
-                        mpcManager.send(message: userConnection.ready)
+                        mpcManager.send(message: userConnection.rewind)
                         mpcManager.result = false
                         viewNumber = 0
                     }, label: {
@@ -91,9 +94,14 @@ struct ResultView: View {
                           Spacer()
                 }.padding(.bottom)
                     .focusScope(mainNamespace)
-            }
+                
+            }.sheet(isPresented: $isDetailsViewDisplayed, content: {
+                DetailsView(isDetailsViewDisplayed: $isDetailsViewDisplayed)
+            })
+            
             
         }
+        
     }
 }
 

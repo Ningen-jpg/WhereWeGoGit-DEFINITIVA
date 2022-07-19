@@ -9,6 +9,8 @@ import Foundation
 
 struct Profile: Codable{
     let name: String
+    let image: Data?
+
     
     func toData() -> Data? {
         var data: Data? = nil

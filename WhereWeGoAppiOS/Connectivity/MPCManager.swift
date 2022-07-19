@@ -16,6 +16,7 @@ class MPCManager: NSObject {
     @Published var quiz = false
     @Published var ready = false
     @Published var end = false
+    @Published var rewind = false
     
     private let peerID :MCPeerID = MCPeerID(displayName: UIDevice.current.name)
     
@@ -56,6 +57,14 @@ class MPCManager: NSObject {
         }
     }
     
+    func sendImage(image: UIImage) {
+        if session.connectedPeers.count > 0 {
+            if let imageData = image.pngData() {
+                try? session.send(imageData, toPeers: session.connectedPeers, with: .reliable)
+                //Per riconvertire: image = UIImage(pngData)
+            }
+        }
+    }
     func startAdvertising() {
         advertiser.startAdvertisingPeer()
         print("Advertising")
@@ -139,6 +148,10 @@ extension MPCManager: MCSessionDelegate{
             case "End":
                 end = true
                 print(end)
+                print(message)
+            case "Rewind":
+                rewind = true
+                print(rewind)
                 print(message)
             default: print("default")
         }

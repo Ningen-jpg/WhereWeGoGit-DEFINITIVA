@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044E692928848242000A7A6F /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E692828848242000A7A6F /* DetailsView.swift */; };
+		851D8CCC2881B15400653527 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851D8CCB2881B15400653527 /* BlurView.swift */; };
+		851D8CCE2881B2DD00653527 /* RsgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851D8CCD2881B2DD00653527 /* RsgView.swift */; };
 		854A5B9028747D4400CB3942 /* QuestionViewtvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A5B8F28747D4400CB3942 /* QuestionViewtvOS.swift */; };
 		85611F3B2874A6950067855D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F3A2874A6950067855D /* Message.swift */; };
 		85611F3F2874A9280067855D /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611F3E2874A9280067855D /* MPCManager.swift */; };
@@ -27,9 +30,14 @@
 		85FBAF2628759E0800A080F3 /* JsonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAF2528759E0800A080F3 /* JsonUtility.swift */; };
 		85FBAF282875CECC00A080F3 /* setQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAF272875CECC00A080F3 /* setQuestionView.swift */; };
 		85FBAF2A2875CF3000A080F3 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBAF292875CF3000A080F3 /* InitialView.swift */; };
+		BF7277B5288475EF00EDF6F4 /* MlModelTest.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF7277B4288475EF00EDF6F4 /* MlModelTest.mlmodel */; };
+		BF7277B72884761300EDF6F4 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7277B62884761300EDF6F4 /* TestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044E692828848242000A7A6F /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		851D8CCB2881B15400653527 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		851D8CCD2881B2DD00653527 /* RsgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsgView.swift; sourceTree = "<group>"; };
 		854A5B8F28747D4400CB3942 /* QuestionViewtvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewtvOS.swift; sourceTree = "<group>"; };
 		85611F3A2874A6950067855D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		85611F3E2874A9280067855D /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
@@ -52,6 +60,8 @@
 		85FBAF2528759E0800A080F3 /* JsonUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtility.swift; sourceTree = "<group>"; };
 		85FBAF272875CECC00A080F3 /* setQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setQuestionView.swift; sourceTree = "<group>"; };
 		85FBAF292875CF3000A080F3 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		BF7277B4288475EF00EDF6F4 /* MlModelTest.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MlModelTest.mlmodel; sourceTree = "<group>"; };
+		BF7277B62884761300EDF6F4 /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +112,8 @@
 				85FBAF292875CF3000A080F3 /* InitialView.swift */,
 				85AC4934287C4DE4000FFD4B /* PlayersView.swift */,
 				854A5B8F28747D4400CB3942 /* QuestionViewtvOS.swift */,
+				BF7277B62884761300EDF6F4 /* TestModel.swift */,
+				BF7277B4288475EF00EDF6F4 /* MlModelTest.mlmodel */,
 				85AC4938287C77DD000FFD4B /* ResultView.swift */,
 				85AEFA002874720F00F871E1 /* WhereWeGoApptvOSApp.swift */,
 				85BE35162874789B009E24A2 /* PreliminaryQuestion.swift */,
@@ -112,7 +124,10 @@
 				85AEFA042874721000F871E1 /* Assets.xcassets */,
 				85AEFA062874721000F871E1 /* Preview Content */,
 				856A7C4A287716DC00A4BFEE /* Questions.swift */,
+				851D8CCB2881B15400653527 /* BlurView.swift */,
 				85FBAF212875789D00A080F3 /* PlayerView.swift */,
+				851D8CCD2881B2DD00653527 /* RsgView.swift */,
+				044E692828848242000A7A6F /* DetailsView.swift */,
 			);
 			path = WhereWeGoApptvOS;
 			sourceTree = "<group>";
@@ -200,16 +215,21 @@
 				85FBAF2A2875CF3000A080F3 /* InitialView.swift in Sources */,
 				85AC492F287C144C000FFD4B /* Profile.swift in Sources */,
 				85FBAF282875CECC00A080F3 /* setQuestionView.swift in Sources */,
+				BF7277B72884761300EDF6F4 /* TestModel.swift in Sources */,
 				857B746228749F7700552DB9 /* Question.swift in Sources */,
+				851D8CCE2881B2DD00653527 /* RsgView.swift in Sources */,
 				85BE35172874789B009E24A2 /* PreliminaryQuestion.swift in Sources */,
+				851D8CCC2881B15400653527 /* BlurView.swift in Sources */,
 				85AC4939287C77DD000FFD4B /* ResultView.swift in Sources */,
 				85AEFA032874720F00F871E1 /* ContentView.swift in Sources */,
 				85AC4935287C4DE4000FFD4B /* PlayersView.swift in Sources */,
 				85FBAF222875789D00A080F3 /* PlayerView.swift in Sources */,
 				85611F3B2874A6950067855D /* Message.swift in Sources */,
 				85611F3F2874A9280067855D /* MPCManager.swift in Sources */,
+				BF7277B5288475EF00EDF6F4 /* MlModelTest.mlmodel in Sources */,
 				85FBAF2628759E0800A080F3 /* JsonUtility.swift in Sources */,
 				856A7C4B287716DC00A4BFEE /* Questions.swift in Sources */,
+				044E692928848242000A7A6F /* DetailsView.swift in Sources */,
 				854A5B9028747D4400CB3942 /* QuestionViewtvOS.swift in Sources */,
 				85AC4931287C14A5000FFD4B /* UserConnection.swift in Sources */,
 				85AEFA012874720F00F871E1 /* WhereWeGoApptvOSApp.swift in Sources */,
@@ -353,7 +373,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -381,7 +401,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "fonztara.PartyEat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

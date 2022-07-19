@@ -12,8 +12,9 @@ struct SetUpView: View {
     var bounds = UIScreen.main.bounds
     @State var connected = false
     @State var username: String = ""
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
+    var imageData: Data? = nil
     @State private var isImagePickerDisplay = false
     @Binding var viewNumber: Int
     let nearBlack = Color(red: 0.1, green: 0.1, blue: 0.1, opacity: 1)
@@ -47,7 +48,7 @@ struct SetUpView: View {
                     if selectedImage != nil {
                         Button(action: {
                             
-                            self.sourceType = .camera
+                            self.sourceType = .photoLibrary
                             self.isImagePickerDisplay.toggle()
                             
                         }, label: {
@@ -59,14 +60,18 @@ struct SetUpView: View {
                                 )
                                 .frame(width: bounds.width * 0.5, height: bounds.height * 0.25)
                                 
-                        })
+                        }).buttonStyle(.plain)
+//                        .onAppear(){
+//                            imageData = selectedImage?.pngData()
+//                        }
                             
                         
                         
                     } else {
+//                        isImageSelected = true
                         Button(action: {
                             
-                            self.sourceType = .camera
+                            self.sourceType = .photoLibrary
                             self.isImagePickerDisplay.toggle()
                             
                             
@@ -84,7 +89,7 @@ struct SetUpView: View {
                                 
                             }
     //                        .padding(.top, 40)
-                        })
+                        }).buttonStyle(.plain)
                         
                     }
                     
@@ -124,7 +129,7 @@ struct SetUpView: View {
                 TextField(
                         "Username",
                         text: $username
-                    )
+                ).textFieldStyle(.plain)
                     .textInputAutocapitalization(.words)
                     .disableAutocorrection(true)
                     .frame(width: bounds.width * 0.5)
@@ -155,7 +160,7 @@ struct SetUpView: View {
                 
                 Button(action: {
                     if connected {
-                        let profile = Profile(name: username)
+                        let profile = Profile(name: username, image: selectedImage?.pngData())
                         mpcManager.send(profile: profile)
                         self.viewNumber = 1
                     }
@@ -169,7 +174,7 @@ struct SetUpView: View {
                             .foregroundColor(connected ? .white : Color(red: 0.2, green: 0.2, blue: 0.2, opacity: 1))
                             .frame(width: bounds.width * 0.3, height: bounds.height * 0.07)
                             .cornerRadius(bounds.width * 0.02)
-                            .shadow(color: .init(white: 0, opacity: connected ? 1 : 0), radius: 18, x: 0, y: 15)
+                            .shadow(color: .init(white: 0, opacity: connected ? 0.4 : 0), radius: 22, x: 0, y: 10)
                             
                         
                             Text("Send")
@@ -186,7 +191,7 @@ struct SetUpView: View {
                         mpcManager.startService()
                     }
                     .scaleEffect(connected ? 1.1 : 1.0)
-                    
+                    .buttonStyle(.plain)
                     
                 
                 

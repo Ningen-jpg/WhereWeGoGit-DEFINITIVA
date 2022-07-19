@@ -18,31 +18,7 @@ struct WaitingView: View {
     @State var waitingText = "Please, wait"
     let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
     
-    struct BlurView: UIViewRepresentable {
 
-        let style: UIBlurEffect.Style
-
-        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
-            let view = UIView(frame: .zero)
-            view.backgroundColor = .clear
-            let blurEffect = UIBlurEffect(style: style)
-            let blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.translatesAutoresizingMaskIntoConstraints = false
-            view.insertSubview(blurView, at: 0)
-            NSLayoutConstraint.activate([
-                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
-                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            ])
-            return view
-        }
-
-        func updateUIView(_ uiView: UIView,
-                          context: UIViewRepresentableContext<BlurView>) {
-            
-
-        }
-
-    }
     
     func gradient(color1: Color, color2: Color) -> LinearGradient {
         LinearGradient(colors: [color1, color2], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -88,7 +64,7 @@ struct WaitingView: View {
                 ZStack {
                 
                     ZStack {
-                        BlurView(style: .systemThickMaterialDark)
+                        BlurView(style: .systemThinMaterialLight)
                             .mask({
                                 Rectangle()
                                     .cornerRadius(10)
@@ -103,7 +79,7 @@ struct WaitingView: View {
 //                            .font(.system(size: 25, weight: .medium, design: .default))
                         
                         Text("\(waitingText)")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
                             .frame(width: bounds.width * 0.5)
                             .multilineTextAlignment(.center)

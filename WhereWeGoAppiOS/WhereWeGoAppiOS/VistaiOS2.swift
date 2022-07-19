@@ -18,7 +18,7 @@ struct VistaiOS2: View {
             VStack(spacing:0){
                         HStack(spacing:0){
                             
-                            let redButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 0)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -38,11 +38,15 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(.plain)
                             
-                            redButton
                             
-                            let greenButton = Button(action: {
+                                
+                                
+                            
+                            
+                            
+                            Button(action: {
                                 let message = Message(answer: 1)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -51,7 +55,7 @@ struct VistaiOS2: View {
                                 
                                 ZStack {
                                     Rectangle()
-                                        .foregroundColor(Color(red: 0.3, green: 0.87, blue: 0.3))
+                                        .foregroundColor(Color(red: 0.4, green: 0.80, blue: 0.3))
                                         .frame(width: bounds.size.width * 0.5, height: bounds.size.height * 0.5)
                                     
                                     Text("2")
@@ -62,13 +66,14 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(.plain)
                             
-                            greenButton
+                            
+                            
                         }
                         
                         HStack(spacing:0){
-                            let blueButton = Button(action: {
+                            Button(action: {
                                 let message = Message(answer: 2)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -77,7 +82,7 @@ struct VistaiOS2: View {
                                 
                                 ZStack {
                                     Rectangle()
-                                        .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.9))
+                                        .foregroundColor(Color(red: 0.3, green: 0.25, blue: 1.0))
                                         .frame(width: bounds.size.width * 0.5, height: bounds.size.height * 0.5)
                                     
                                     Text("3")
@@ -88,11 +93,13 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(.plain)
                             
-                            blueButton
                             
-                            let purpleButton = Button(action: {
+                            
+                            
+                            
+                            Button(action: {
                                 let message = Message(answer: 3)
                                 mpcManager.send(message: message)
                                 viewNumber = 4;
@@ -112,11 +119,18 @@ struct VistaiOS2: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(.plain)
                             
-                            purpleButton
+                            
+                            
                         }
                     }.edgesIgnoringSafeArea(.all)
+            .onAppear(perform: {
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.impact(style: .heavy)
+                HapticManager.instance.notification(type: .error)
+            })
         
         
     }

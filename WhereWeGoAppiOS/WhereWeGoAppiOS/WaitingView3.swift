@@ -11,38 +11,14 @@ struct WaitingView3: View {
     var bounds = UIScreen.main.bounds
     let mpcManager = MPCManager.shared
     @Binding var viewNumber: Int
-    @State var ready = false
+    @State var rewind = false
     @State private var isLoading = false
     @State private var isBgRotating = false
     
     @State var waitingText2 = "Pack up, you are going to"
     let timer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
     
-    struct BlurView: UIViewRepresentable {
-
-        let style: UIBlurEffect.Style
-
-        func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
-            let view = UIView(frame: .zero)
-            view.backgroundColor = .clear
-            let blurEffect = UIBlurEffect(style: style)
-            let blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.translatesAutoresizingMaskIntoConstraints = false
-            view.insertSubview(blurView, at: 0)
-            NSLayoutConstraint.activate([
-                blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
-                blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            ])
-            return view
-        }
-
-        func updateUIView(_ uiView: UIView,
-                          context: UIViewRepresentableContext<BlurView>) {
-            
-
-        }
-
-    }
+   
     
     func gradient(color1: Color, color2: Color) -> LinearGradient {
         LinearGradient(colors: [color1, color2], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -59,9 +35,9 @@ struct WaitingView3: View {
                 .onAppear(){
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                     print(viewNumber)
-                    if(mpcManager.ready){
-                        ready = true
-                        print("ready")
+                    if(mpcManager.rewind){
+                        rewind = true
+                        print("rewind")
                         timer.invalidate()
                     }
                 }
@@ -81,19 +57,19 @@ struct WaitingView3: View {
             
             
 
-            if(!ready){
+            if(!rewind){
                 BgView()
                 
                 
             
                 VStack{
-                    Image(systemName: "arrow.up.circle.fill")
+                    Image(systemName: "airplane")
                         .font(.system(size: bounds.width * 0.3))
                                     .foregroundColor(.white)
                                     .frame(width: bounds.width * 0.4, height: bounds.height * 0.2)
 //                                    .scaleEffect(isLoading ? 1.2 : 1.0)
-                                    .offset(x: 0, y: isLoading ? -50 : 0)
-//                                    .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                    .offset(x: isLoading ? bounds.height * 0.1 : 0, y: 0)
+                                    .rotationEffect(Angle(degrees: 270))
                                     .onAppear() {
                                         withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), {
                                             isLoading.toggle()
@@ -103,7 +79,7 @@ struct WaitingView3: View {
                     ZStack {
                     
                         ZStack {
-                            BlurView(style: .systemThickMaterialDark)
+                            BlurView(style: .systemThinMaterialLight)
                                 .mask({
                                     Rectangle()
                                         .cornerRadius(10)
@@ -119,7 +95,7 @@ struct WaitingView3: View {
     //                                .multilineTextAlignment(.center)
                             
                             Text("\(waitingText2)")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: bounds.width * 0.07, weight: .medium, design: .default))
                                 .frame(width: bounds.width * 0.6)
                                 .multilineTextAlignment(.center)
@@ -143,14 +119,19 @@ struct WaitingView3: View {
                 Text("Qualcosa")
                     .onAppear(){
                         print("numero")
-                        ready = false
+                        rewind = false
+                        mpcManager.rewind = false
                         mpcManager.end = false
-                        viewNumber = 3
+                        viewNumber = 1
                     }
             }
         }
         .onAppear(){
-            mpcManager.ready = false
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.impact(style: .heavy)
+            HapticManager.instance.notification(type: .error)
+            mpcManager.rewind = false
     }
 }
 
